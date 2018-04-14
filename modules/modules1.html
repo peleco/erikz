@@ -1,0 +1,329 @@
+<!doctype html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <style>
+          body {
+            margin: 0;
+            padding: 0;
+            background-color: #FFDE00;
+          }
+          .container {
+            width: 660px;
+            height: auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+            grid-column-gap: 0;
+          }
+          .modulo {
+            /* display: inline-block; */
+            width: 0;
+            height: 0;
+            margin: 0;
+            padding: 0;
+            border-top: solid #FFDE00 55px;
+            border-bottom: solid #FFDE00 55px;
+            border-left: solid #FFDE00 55px;
+            border-right: solid #FFDE00 55px;
+          }
+
+          /*Animacion 1*/
+          @keyframes animation-1 {
+              0%   {
+                border-top: solid black 55px;
+                border-bottom: solid black 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              50%  {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid black 55px;
+                border-right: solid black 55px;
+              }
+              100%  {
+                border-top: solid black 55px;
+                border-bottom: solid black 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid #FFDE00 55px;
+              }
+          }
+          .animation-1 {
+            animation-name: animation-1;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(1, 0, 0, 1);
+          }
+
+          /*Animacion 2*/
+          @keyframes animation-2 {
+              0%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid black 55px;
+                border-right: solid black 55px;
+              }
+              50%  {
+                border-top: solid black 55px;
+                border-bottom: solid black 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              100%  {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid black 55px;
+                border-right: solid black 55px;
+              }
+          }
+          .animation-2 {
+            animation-name: animation-2;
+            animation-duration: 12s;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(1, 0, 0, 1);
+          }
+
+          /*Animacion 3*/
+          @keyframes animation-3 {
+              0%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid black 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid black 55px;
+              }
+              50%  {
+                border-top: solid black 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid black 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              100%  {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid black 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid black 55px;
+              }
+          }
+          .animation-3 {
+            animation-name: animation-3;
+            animation-duration: 14s;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(1, 0, 0, 1);
+          }
+
+          /*Animacion 4*/
+          @keyframes animation-4 {
+              0%   {
+                border-top: solid black 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid black 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              50%  {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid black 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid black 55px;
+              }
+              100%  {
+                border-top: solid black 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid black 55px;
+                border-right: solid #FFDE00 55px;
+              }
+          }
+          .animation-4 {
+            animation-name: animation-4;
+            animation-duration: 16s;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(1, 0, 0, 1);
+          }
+
+          /*Animacion 5*/
+          @keyframes animation-5 {
+              0%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid black 55px;
+                border-left: solid black 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              50%  {
+                border-top: solid black 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid black 55px;
+              }
+              100%  {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid black 55px;
+                border-left: solid black 55px;
+                border-right: solid #FFDE00 55px;
+              }
+          }
+          .animation-5 {
+            animation-name: animation-5;
+            animation-duration: 11s;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(1, 0, 0, 1);
+          }
+
+          /*Animacion 6*/
+          @keyframes animation-6 {
+              0%   {
+                border-top: solid black 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid black 55px;
+              }
+              50%  {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid black 55px;
+                border-left: solid black 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              100%  {
+                border-top: solid black 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid black 55px;
+              }
+          }
+          .animation-6 {
+            animation-name: animation-6;
+            animation-duration: 13s;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(1, 0, 0, 1);
+          }
+
+          /*Animacion 7*/
+          @keyframes animation-7 {
+              0%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              20%   {
+                border-top: solid black 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              40%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid black 55px;
+              }
+              60%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid black 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              80%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid black 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              100%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid #FFDE00 55px;
+              }
+
+          }
+          .animation-7 {
+            animation-name: animation-7;
+            animation-duration: 20s;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(1, 0, 0, 1);
+          }
+
+          /*Animacion 8*/
+          @keyframes animation-8 {
+              0%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              20%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid black 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              40%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid black 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              60%   {
+                border-top: solid black 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              80%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid black 55px;
+              }
+              100%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid #FFDE00 55px;
+              }
+
+          }
+          .animation-8 {
+            animation-name: animation-8;
+            animation-duration: 16s;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(1, 0, 0, 1);
+          }
+
+        </style>
+
+        <script>
+
+          function createmodulos() {
+            const moduloNb = 30;
+            const moduloTemplate = document.querySelector('.modulo');
+
+            for (i=0; i < moduloNb; i++) {
+              const newNode = document.createElement('div');
+              newNode.className = 'modulo';
+              document.querySelector('.container').appendChild(newNode);
+              addAnimation(newNode);
+            }
+          }
+
+          function addAnimation(node) {
+            const animationNumber = Math.ceil(Math.random() * 8);
+            node.classList.add('animation-'+animationNumber);
+            //node.classList.add(`animation-${Math.ceil(Math.random() * 10)}`);
+          }
+
+          window.onload = createmodulos;
+
+        </script>
+
+    </head>
+    <body>
+
+      <div class="container"></div>
+
+    </body>
+</html>

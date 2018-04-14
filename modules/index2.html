@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="stylesheet" href="css/normalize.css">
+        <style>
+          body {
+            margin: 0;
+            padding: 0;
+            background-color: #FFDE00;
+          }
+          .container {
+            width: 660px;
+            height: auto;
+          }
+          .modulo {
+            display: inline-block;
+            width: 0;
+            height: 0;
+            margin: -2px;
+            padding: 0;
+            border-top: solid #FFDE00 55px;
+            border-bottom: solid #FFDE00 55px;
+            border-left: solid #FFDE00 55px;
+            border-right: solid #FFDE00 55px;
+          }
+
+          /*Animacion 1*/
+          @keyframes animation-1 {
+              0%   {
+                border-top: solid black 50px;
+                border-bottom: solid black 60px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              50%  {
+                border-top: solid black 60px;
+                border-bottom: solid black 50px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              100%  {
+                border-top: solid black 50px;
+                border-bottom: solid black 60px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid #FFDE00 55px;
+              }
+          }
+          .animation-1 {
+            animation-name: animation-1;
+            animation-duration: 2.8s;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(.35, .01, .67, 1);
+          }
+
+          /*Animacion 2*/
+          @keyframes animation-2 {
+              0%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid black 60px;
+                border-right: solid black 50px;
+              }
+              50%  {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid black 50px;
+                border-right: solid black 60px;
+              }
+              100%  {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid black 60px;
+                border-right: solid black 50px;
+              }
+          }
+          .animation-2 {
+            animation-name: animation-2;
+            animation-duration: 2.8s;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(.35, .01, .67, 1);
+          }
+
+          /*Animacion 3*/
+          @keyframes animation-3 {
+              0%   {
+                border-top: solid #black 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid black 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              50%  {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid black 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid black 55px;
+              }
+              100%   {
+                border-top: solid #black 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid black 55px;
+                border-right: solid #FFDE00 55px;
+              }
+          }
+          .animation-3 {
+            animation-name: animation-3;
+            animation-duration: 10s;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(1, 0, 0, 1);
+          }
+
+          /*Animacion 4*/
+          @keyframes animation-4 {
+              0%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              25%  {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid black 55px;
+              }
+              50%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid black 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              75%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid black 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              100%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid #FFDE00 55px;
+              }
+          }
+          .animation-4 {
+            animation-name: animation-4;
+            animation-duration: 15s;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(1, 0, 0, 1);
+          }
+
+          /*Animacion 5*/
+          @keyframes animation-5 {
+              0%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              100%  {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid black 55px;
+                border-right: solid #FFDE00 55px;
+              }
+
+          }
+          .animation-5 {
+            animation-name: animation-5;
+            animation-duration: 20s;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(1, 0, 0, 1);
+          }
+
+          /*Animacion 6*/
+          @keyframes animation-6 {
+              0%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              100%  {
+                border-top: solid black 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid #FFDE00 55px;
+              }
+
+          }
+          .animation-6 {
+            animation-name: animation-6;
+            animation-duration: 13s;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(1, 0, 0, 1);
+          }
+
+          /*Animacion 7*/
+          @keyframes animation-7 {
+              0%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              100%  {
+                border-top: solid black 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid #FFDE00 55px;
+              }
+
+          }
+          .animation-7 {
+            animation-name: animation-7;
+            animation-duration: 13s;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(1, 0, 0, 1);
+          }
+
+          /*Animacion 8*/
+          @keyframes animation-8 {
+              0%   {
+                border-top: solid black 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid black 55px;
+              }
+              50%  {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid black 55px;
+                border-left: solid black 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              100%   {
+                border-top: solid black 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid black 55px;
+              }
+          }
+          .animation-8 {
+            animation-name: animation-8;
+            animation-duration: 40s;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(1, 0, 0, 1);
+            border-radius: 55px;
+          }
+
+          /*Animacion 9*/
+          @keyframes animation-9 {
+              0%   {
+                border-top: solid black 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid black 55px;
+                transform: rotate(180deg);
+              }
+              50%  {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid black 55px;
+                border-left: solid black 55px;
+                border-right: solid #FFDE00 55px;
+                transform: rotate(0deg);
+              }
+              100%   {
+                border-top: solid black 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid black 55px;
+                transform: rotate(180deg);
+              }
+          }
+          .animation-9 {
+            animation-name: animation-9;
+            animation-duration: 40s;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(1, 0, 0, 1);
+            border-radius: 55px;
+          }
+
+          /*Animacion 10*/
+          @keyframes animation-10 {
+              0%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              25%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid black 55px;
+              }
+              50%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid black 55px;
+                border-right: solid #FFDE00 55px;
+              }
+              75%   {
+                border-top: solid #FFDE00 55px;
+                border-bottom: solid #FFDE00 55px;
+                border-left: solid #FFDE00 55px;
+                border-right: solid #FFDE00 55px;
+              }
+          }
+          .animation-10 {
+            animation-name: animation-10;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+            animation-timing-function: cubic-bezier(1, 0, 0, 1);
+          }
+        </style>
+
+        <script>
+
+          function randomAnimation () {
+
+            // for (i=0; i<30; i++) {
+            //
+            //   modulo[i] = document.querySelector('modulo-'+i);
+            //   alert('modulo-'+i);
+            //   modulo.classList.add('animation-' + Math.ceil(Math.random() * 9));
+            // }
+
+            modulo1 = document.querySelector('div.modulo-1');
+            modulo1.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo2 = document.querySelector('div.modulo-2');
+            modulo2.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo3 = document.querySelector('div.modulo-3');
+            modulo3.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo4 = document.querySelector('div.modulo-4');
+            modulo4.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo5 = document.querySelector('div.modulo-5');
+            modulo5.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo6 = document.querySelector('div.modulo-6');
+            modulo6.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo7 = document.querySelector('div.modulo-7');
+            modulo7.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo8 = document.querySelector('div.modulo-8');
+            modulo8.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo9 = document.querySelector('div.modulo-9');
+            modulo9.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo10 = document.querySelector('div.modulo-10');
+            modulo10.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo11 = document.querySelector('div.modulo-11');
+            modulo11.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo12 = document.querySelector('div.modulo-12');
+            modulo12.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo13 = document.querySelector('div.modulo-13');
+            modulo13.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo14 = document.querySelector('div.modulo-14');
+            modulo14.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo15 = document.querySelector('div.modulo-15');
+            modulo15.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo16 = document.querySelector('div.modulo-16');
+            modulo16.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo17 = document.querySelector('div.modulo-17');
+            modulo17.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo18 = document.querySelector('div.modulo-18');
+            modulo18.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo19 = document.querySelector('div.modulo-19');
+            modulo19.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo20 = document.querySelector('div.modulo-20');
+            modulo20.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo21 = document.querySelector('div.modulo-21');
+            modulo21.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo22 = document.querySelector('div.modulo-22');
+            modulo22.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo23 = document.querySelector('div.modulo-23');
+            modulo23.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo24 = document.querySelector('div.modulo-24');
+            modulo24.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo25 = document.querySelector('div.modulo-25');
+            modulo25.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo26 = document.querySelector('div.modulo-26');
+            modulo26.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo27 = document.querySelector('div.modulo-27');
+            modulo27.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo28 = document.querySelector('div.modulo-28');
+            modulo28.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo29 = document.querySelector('div.modulo-29');
+            modulo29.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+            modulo30 = document.querySelector('div.modulo-30');
+            modulo30.classList.add('animation-'+Math.ceil(Math.random() * 10));
+
+          }
+          window.onload = randomAnimation;
+
+        </script>
+
+    </head>
+    <body>
+
+      <div class="container">
+        <div class="modulo modulo-1"></div>
+        <div class="modulo modulo-2"></div>
+        <div class="modulo modulo-3"></div>
+        <div class="modulo modulo-4"></div>
+        <div class="modulo modulo-5"></div>
+        <div class="modulo modulo-6"></div>
+        <div class="modulo modulo-7"></div>
+        <div class="modulo modulo-8"></div>
+        <div class="modulo modulo-9"></div>
+        <div class="modulo modulo-10"></div>
+        <div class="modulo modulo-11"></div>
+        <div class="modulo modulo-12"></div>
+        <div class="modulo modulo-13"></div>
+        <div class="modulo modulo-14"></div>
+        <div class="modulo modulo-15"></div>
+        <div class="modulo modulo-16"></div>
+        <div class="modulo modulo-17"></div>
+        <div class="modulo modulo-18"></div>
+        <div class="modulo modulo-19"></div>
+        <div class="modulo modulo-20"></div>
+        <div class="modulo modulo-21"></div>
+        <div class="modulo modulo-22"></div>
+        <div class="modulo modulo-23"></div>
+        <div class="modulo modulo-24"></div>
+        <div class="modulo modulo-25"></div>
+        <div class="modulo modulo-26"></div>
+        <div class="modulo modulo-27"></div>
+        <div class="modulo modulo-28"></div>
+        <div class="modulo modulo-29"></div>
+        <div class="modulo modulo-30"></div>
+      </div>
+
+    </body>
+</html>

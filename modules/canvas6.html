@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <script type="application/javascript">
+    function draw() {
+      var canvas = document.getElementById("canvas");
+      if (canvas.getContext) {
+        var ctx = canvas.getContext('2d');
+
+        var canvasWidth = canvas.width;
+        var canvasHeight = canvas.height;
+
+        var moduleOpacity1 = 1;
+        var opacityFlag1 = false;
+        var moduleOpacity2 = 0;
+        var opacityFlag2 = true;
+        var opacitySpeed1 = 100+(Math.random()*1000);
+
+        var moduleOpacity3 = 1;
+        var opacityFlag3 = false;
+        var moduleOpacity4 = 0;
+        var opacityFlag4 = true;
+        var opacitySpeed2 = 100+(Math.random()*1000);
+        // console.log(opacitySpeed);
+
+        var requestAnimationFrame = window.requestAnimationFrame;
+
+        function drawModule() {
+
+          ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
+          ctx.beginPath();
+          ctx.moveTo(110,0);
+          ctx.lineTo(55,55);
+          ctx.lineTo(110,110);
+          ctx.closePath();
+          ctx.fillStyle = "rgba(0,0,0,"+moduleOpacity1+")";
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.moveTo(0,0);
+          ctx.lineTo(55,55);
+          ctx.lineTo(0,110);
+          ctx.closePath();
+          ctx.fillStyle = "rgba(0,0,0,"+moduleOpacity2+")";
+          ctx.fill();
+
+          if (moduleOpacity1 <= 0) {
+            opacityFlag1 = true;
+            opacityFlag2 = false;
+          } else if (moduleOpacity1 >= 1) {
+            opacityFlag1 = false;
+            opacityFlag2 = true;
+          }
+
+          if (opacityFlag1) {
+            moduleOpacity1 += 1/opacitySpeed1;
+            moduleOpacity2 -= 1/opacitySpeed1;
+          } else {
+            moduleOpacity1 -= 1/opacitySpeed1;
+            moduleOpacity2 += 1/opacitySpeed1;
+          }
+
+
+          ctx.beginPath();
+          ctx.moveTo(220,0);
+          ctx.lineTo(165,55);
+          ctx.lineTo(220,110);
+          ctx.closePath();
+          ctx.fillStyle = "rgba(0,0,0,"+moduleOpacity3+")";
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.moveTo(110,0);
+          ctx.lineTo(165,55);
+          ctx.lineTo(110,110);
+          ctx.closePath();
+          ctx.fillStyle = "rgba(0,0,0,"+moduleOpacity4+")";
+          ctx.fill();
+
+          if (moduleOpacity3 <= 0) {
+            opacityFlag3 = true;
+            opacityFlag4 = false;
+          } else if (moduleOpacity3 >= 1) {
+            opacityFlag3 = false;
+            opacityFlag4 = true;
+          }
+
+          if (opacityFlag3) {
+            moduleOpacity3 += 1/opacitySpeed2;
+            moduleOpacity4 -= 1/opacitySpeed2;
+          } else {
+            moduleOpacity3 -= 1/opacitySpeed2;
+            moduleOpacity4 += 1/opacitySpeed2;
+          }
+
+
+          // console.log(opacityFlag, moduleOpacity);
+
+          requestAnimationFrame(drawModule);
+        }
+        drawModule();
+
+      }
+    }
+    window.onload = draw;
+  </script>
+
+ </head>
+ <body>
+   <canvas id="canvas" width="660" height="550"></canvas>
+ </body>
+</html>

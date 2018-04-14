@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <script type="application/javascript">
+    function draw() {
+      var canvas = document.getElementById("canvas");
+      if (canvas.getContext) {
+        var ctx = canvas.getContext('2d');
+        var modulesColumns = 6;
+        var modulesgridRow = 5;
+        var modulesN = modulesColumns * modulesgridRow;
+        var listaModulosTipos = new Array();
+        var listaOpacitySpeeds = new Array();
+        var listaOpacityFlags = new Array();
+        var listaOpacity = new Array();
+        // console.log(opacitySpeed);
+
+        var requestAnimationFrame = window.requestAnimationFrame;
+
+        function Modulo (col, row, opacity1, modtype) {
+          var moduloW = 110;
+          var moduloH = 110;
+          // var opacitySpeed = 100+(Math.random()*1000);
+          var gridColumn = col;
+          var gridRow = row;
+          var moduloOpacity1 = opacity1;
+          // var moduloOpacity1 = opacity1;
+          var moduloOpacity2 = 0;
+          var moduloType = modtype;
+          // var moduloFlag = flag
+
+          // var opacityFlag;
+          // if (moduloOpacity1 >= 1) {
+          //   opacityFlag = true;
+          // } else if (moduloOpacity1 <= 0) {
+          //   opacityFlag = false;
+          // }
+
+          // var randomModulo = Math.floor(Math.random() * 10);
+
+          switch (moduloType) {
+            case 0:
+              ctx.beginPath();
+              ctx.moveTo(moduloW*gridColumn,moduloH*gridRow);
+              ctx.lineTo((moduloW/2)+moduloW*gridColumn,(moduloH/2)+moduloH*gridRow);
+              ctx.lineTo((moduloW)+moduloW*gridColumn, moduloH*gridRow);
+              ctx.closePath();
+              ctx.fillStyle = "rgba(0,0,0,"+ moduloOpacity1 +")";
+              ctx.fill();
+              break;
+
+            case 1:
+              ctx.beginPath();
+              ctx.moveTo(moduloW*gridColumn,(moduloH*gridRow)+moduloH);
+              ctx.lineTo((moduloW/2)+moduloW*gridColumn,(moduloH/2)+moduloH*gridRow);
+              ctx.lineTo((moduloW)+moduloW*gridColumn, (moduloH*gridRow)+moduloH);
+              ctx.closePath();
+              ctx.fillStyle = "rgba(0,0,0,"+ moduloOpacity1 +")";
+              ctx.fill();
+              break;
+
+            case 2:
+              ctx.beginPath();
+              ctx.moveTo(moduloW*gridColumn,(moduloH*gridRow)+moduloH);
+              ctx.lineTo((moduloW/2)+moduloW*gridColumn,(moduloH/2)+moduloH*gridRow);
+              ctx.lineTo((moduloW)+moduloW*gridColumn, (moduloH*gridRow)+moduloH);
+              ctx.closePath();
+              ctx.fillStyle = "rgba(0,0,0,"+ moduloOpacity1 +")";
+              ctx.fill();
+              break;
+
+            case 3:
+              ctx.beginPath();
+              ctx.moveTo((moduloW*gridColumn)+moduloW,moduloH*gridRow);
+              ctx.lineTo((moduloW/2)+moduloW*gridColumn,(moduloH/2)+moduloH*gridRow);
+              ctx.lineTo((moduloW*gridColumn)+moduloW, (moduloH*gridRow)+moduloH);
+              ctx.closePath();
+              ctx.fillStyle = "rgba(0,0,0,"+ moduloOpacity1 +")";
+              ctx.fill();
+              break;
+
+            case 4:
+              ctx.beginPath();
+              ctx.moveTo(moduloW*gridColumn,moduloH*gridRow);
+              ctx.lineTo((moduloW*gridColumn)+moduloW,moduloH*gridRow);
+              ctx.lineTo((moduloW*gridColumn)+moduloW,(moduloH*gridRow)+moduloH);
+              ctx.closePath();
+              ctx.fillStyle = "rgba(0,0,0,"+ moduloOpacity1 +")";
+              ctx.fill();
+              break;
+
+            case 5:
+              ctx.beginPath();
+              ctx.moveTo(moduloW*gridColumn,moduloH*gridRow);
+              ctx.lineTo(moduloW*gridColumn,(moduloH*gridRow)+moduloH);
+              ctx.lineTo((moduloW*gridColumn)+moduloW,(moduloH*gridRow)+moduloH);
+              ctx.closePath();
+              ctx.fillStyle = "rgba(0,0,0,"+ moduloOpacity1 +")";
+              ctx.fill();
+              break;
+
+            case 6:
+              ctx.beginPath();
+              ctx.moveTo(moduloW*gridColumn,moduloH*gridRow);
+              ctx.lineTo(moduloW*gridColumn,(moduloH*gridRow)+moduloH);
+              ctx.lineTo((moduloW*gridColumn)+moduloW,moduloH*gridRow);
+              ctx.closePath();
+              ctx.fillStyle = "rgba(0,0,0,"+ moduloOpacity1 +")";
+              ctx.fill();
+              break;
+
+            case 7:
+              ctx.beginPath();
+              ctx.moveTo((moduloW*gridColumn)+moduloW,moduloH*gridRow);
+              ctx.lineTo((moduloW*gridColumn)+moduloW,(moduloH*gridRow)+moduloH);
+              ctx.lineTo(moduloW*gridColumn,(moduloH*gridRow)+moduloH);
+              ctx.closePath();
+              ctx.fillStyle = "rgba(0,0,0,"+ moduloOpacity1 +")";
+              ctx.fill();
+              break;
+
+            case 8:
+              ctx.beginPath();
+              ctx.moveTo(moduloW*gridColumn,moduloH*gridRow);
+              ctx.lineTo((moduloW*gridColumn)+moduloW,moduloH*gridRow);
+              ctx.lineTo(moduloW*gridColumn,(moduloH*gridRow)+moduloH);
+              ctx.lineTo((moduloW*gridColumn)+moduloW,(moduloH*gridRow)+moduloH);
+              ctx.closePath();
+              ctx.fillStyle = "rgba(0,0,0,"+ moduloOpacity1 +")";
+              ctx.fill();
+              break;
+
+            case 9:
+              ctx.beginPath();
+              ctx.moveTo(moduloW*gridColumn,moduloH*gridRow);
+              ctx.lineTo((moduloW*gridColumn)+moduloW,(moduloH*gridRow)+moduloH);
+              ctx.lineTo((moduloW*gridColumn)+moduloW,moduloH*gridRow);
+              ctx.lineTo(moduloW*gridColumn,(moduloH*gridRow)+moduloH);
+              ctx.closePath();
+              ctx.fillStyle = "rgba(0,0,0,"+ moduloOpacity1 +")";
+              ctx.fill();
+              break;
+
+          }
+        }
+
+        var opacityAnimation = 0;
+        var opacityFlag = true;
+
+        function createGrid () {
+
+          for (var gridRow=0; gridRow<modulesgridRow; gridRow++) {
+            for (var gridColumn=0; gridColumn<modulesColumns; gridColumn++) {
+
+              var randomModulo = Math.floor(Math.random() * 10);
+              listaModulosTipos.push(randomModulo);
+              // console.log(listaModulosTipos);
+
+              var opacitySpeed = .1/(50+(Math.random()*200));
+              listaOpacitySpeeds.push(opacitySpeed);
+              // console.log(listaOpacitySpeeds);
+
+              listaOpacityFlags.push(opacityFlag);
+              listaOpacity.push(opacityAnimation);
+
+              Modulo(gridColumn,gridRow,opacityAnimation,randomModulo);
+            }
+          }
+          animacionModulos();
+        }
+        createGrid();
+
+
+
+        function animacionModulos () {
+          ctx.clearRect(0, 0, 660, 550);
+          var i = 0;
+          for (var gridRow=0; gridRow<modulesgridRow; gridRow++) {
+            for (var gridColumn=0; gridColumn<modulesColumns; gridColumn++) {
+
+              Modulo(gridColumn,gridRow,listaOpacity[i],listaModulosTipos[i]);
+
+
+              // opacityAnimation += 0.1;
+              // console.log(opacityAnimation);
+              if ((listaOpacity[i]) <= 0) {
+                // opacityFlag = true;
+                // listaOpacityFlags.splice(i,1,true);
+                listaOpacityFlags[i] = true;
+                // console.log(listaOpacityFlags[i],listaOpacity[i]);
+              }
+              else if ((listaOpacity[i]) >= 1) {
+                // opacityFlag = false;
+                // listaOpacityFlags.splice(i,1,false);
+                listaOpacityFlags[i] = false;
+                // console.log(listaOpacityFlags[i],listaOpacity[i]);
+              }
+              //
+              // var flagFromArray = listaOpacityFlags[i];
+              if (listaOpacityFlags[i] == true) {
+
+                // opacityAnimation += listaOpacitySpeeds[i];
+                opacityAnimation = listaOpacity[i] + listaOpacitySpeeds[i];
+
+              } else {
+
+                // opacityAnimation -= listaOpacitySpeeds[i];
+                opacityAnimation = listaOpacity[i] - listaOpacitySpeeds[i];
+
+              }
+              // listaOpacity.splice(i,1,opacityAnimation);
+              listaOpacity[i] = opacityAnimation;
+              // console.log(listaOpacity[i]);
+              // listaOpacitySpeeds.splice(i,1,opacityAnimation);
+              // console.log(Modulo);
+
+              i ++;
+              // console.log(listaOpacityFlags);
+            }
+          }
+          // console.log(listaOpacity[0], listaOpacitySpeeds[0], listaOpacityFlags[0]);
+          // console.log(listaOpacitySpeeds);
+          // console.log(listaOpacity)
+          requestAnimationFrame(animacionModulos);
+
+        }
+
+        // animacionModulos();
+      }
+
+    }
+    window.onload = draw;
+  </script>
+  <style>
+
+    body {
+      background-color: #FFDE00;
+    }
+    #canvas {
+      width: 100%;
+      max-width: 660px;
+      height: auto;
+    }
+  </style>
+ </head>
+ <body>
+   <canvas id="canvas" width="660" height="550"></canvas>
+ </body>
+</html>

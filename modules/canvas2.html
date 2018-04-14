@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <script type="application/javascript">
+    function modulos() {
+      var canvas = document.getElementById('canvas');
+      if (canvas.getContext) {
+        var ctx = canvas.getContext('2d');
+        var moduleW = 110;
+        var moduleH = 110;
+        var modulesColumns = 6;
+        var modulesRows = 5;
+        var modulesN = modulesColumns * modulesRows;
+
+        var cols = 0;
+        var rows = 0;
+
+        // function drawModule () {
+        //   // ctx.clearRect(0, 0, mainCanvas.width, mainCanvas.height);
+        //   var moduleOpacity =+ Math.random()*0.1;
+        //
+        //   ctx.beginPath();
+        //   ctx.moveTo(moduleW*cols,moduleH*rows);
+        //   ctx.lineTo((moduleW/2)+moduleW*cols,(moduleH/2)+moduleH*rows);
+        //   ctx.lineTo((moduleW)+moduleW*cols, moduleH*rows);
+        //   ctx.lineTo(moduleW*cols, moduleH*rows);
+        //   ctx.closePath();
+        //   ctx.fillStyle = "rgba(0,0,0,"+moduleOpacity+")";
+        //   ctx.fill();
+        //
+        //   ctx.beginPath();
+        //   ctx.moveTo(moduleW*cols,(moduleH*rows)+moduleH);
+        //   ctx.lineTo((moduleW/2)+moduleW*cols,(moduleH/2)+moduleH*rows);
+        //   ctx.lineTo((moduleW)+moduleW*cols, (moduleH*rows)+moduleH);
+        //   ctx.lineTo(moduleW*cols, (moduleH*rows)+moduleH);
+        //   ctx.closePath();
+        //   ctx.fillStyle = "rgba(0,0,0,"+moduleOpacity+")";
+        //   ctx.fill();
+        //
+        //   requestAnimationFrame(drawModule);
+        // }
+        // drawModule();
+
+
+        var fps = 30;
+        var now;
+        var then = Date.now();
+        var interval = 1000/fps;
+        var delta;
+        var moduleOpacity = 0;
+        var opacidadUP = true;
+        function draw() {
+
+            requestAnimationFrame(draw);
+
+            now = Date.now();
+            delta = now - then;
+
+            if (delta > interval) {
+
+                // update time stuffs
+
+                // Just `then = now` is not enough.
+                // Lets say we set fps at 10 which means
+                // each frame must take 100ms
+                // Now frame executes in 16ms (60fps) so
+                // the loop iterates 7 times (16*7 = 112ms) until
+                // delta > interval === true
+                // Eventually this lowers down the FPS as
+                // 112*10 = 1120ms (NOT 1000ms).
+                // So we have to get rid of that extra 12ms
+                // by subtracting delta (112) % interval (100).
+                // Hope that makes sense.
+
+                then = now - (delta % interval);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                // ... Code for Drawing the Frame ...
+
+                if (moduleOpacity==1){
+                  opacidadUP = false;
+                }  else if (moduleOpacity==0) {
+                  opacidadUP = true;
+                }
+                if (opacidadUP==true) {
+                  moduleOpacity+=0.1;
+                } else {
+                  moduleOpacity-=0.1;
+                }
+                // console.log(moduleOpacity)
+
+                // var moduleOpacity =+ Math.random()*0.1;
+                // ctx.clearRect();
+                // ctx.clearRect(0, 0, canvas.width, canvas.height);
+                ctx.beginPath();
+                ctx.moveTo(moduleW*cols,moduleH*rows);
+                ctx.lineTo((moduleW/2)+moduleW*cols,(moduleH/2)+moduleH*rows);
+                ctx.lineTo((moduleW)+moduleW*cols, moduleH*rows);
+                ctx.lineTo(moduleW*cols, moduleH*rows);
+                ctx.closePath();
+                ctx.fillStyle = "black";
+                ctx.fill();
+                ctx.globalAlpha = moduleOpacity;
+
+                ctx.beginPath();
+                ctx.moveTo(moduleW*cols,(moduleH*rows)+moduleH);
+                ctx.lineTo((moduleW/2)+moduleW*cols,(moduleH/2)+moduleH*rows);
+                ctx.lineTo((moduleW)+moduleW*cols, (moduleH*rows)+moduleH);
+                ctx.lineTo(moduleW*cols, (moduleH*rows)+moduleH);
+                ctx.closePath();
+                ctx.fillStyle = "black";
+                ctx.fill();
+                ctx.globalAlpha = moduleOpacity;
+                // requestAnimationFrame(drawModule);
+            }
+        }
+
+        draw();
+
+
+// var framesPerSecond = 30;
+        // function animate() {
+        //     setTimeout(function() {
+        //         requestAnimationFrame(animate);
+        //
+        //         function drawModule () {
+        //
+        //           var moduleOpacity =+ Math.random()*0.1;
+        //           // ctx.clearRect();
+        //           ctx.beginPath();
+        //           ctx.moveTo(moduleW*cols,moduleH*rows);
+        //           ctx.lineTo((moduleW/2)+moduleW*cols,(moduleH/2)+moduleH*rows);
+        //           ctx.lineTo((moduleW)+moduleW*cols, moduleH*rows);
+        //           ctx.lineTo(moduleW*cols, moduleH*rows);
+        //           ctx.closePath();
+        //           ctx.fillStyle = "black";
+        //           ctx.fill();
+        //           ctx.globalAlpha = 0.1;
+        //
+        //           ctx.beginPath();
+        //           ctx.moveTo(moduleW*cols,(moduleH*rows)+moduleH);
+        //           ctx.lineTo((moduleW/2)+moduleW*cols,(moduleH/2)+moduleH*rows);
+        //           ctx.lineTo((moduleW)+moduleW*cols, (moduleH*rows)+moduleH);
+        //           ctx.lineTo(moduleW*cols, (moduleH*rows)+moduleH);
+        //           ctx.closePath();
+        //           ctx.fillStyle = "rgba(0,0,0,"+moduleOpacity+")";
+        //           ctx.fill();
+        //           // requestAnimationFrame(drawModule);
+        //         }
+        //         drawModule();
+        //
+        //
+        //     }, 1000 / framesPerSecond);
+        // }
+        // animate();
+
+        // for (var rows=0; rows<modulesRows; rows++) {
+        //
+        //   for (var cols=0; cols<modulesColumns; cols++) {
+        //
+        //     // var randomModule = Math.floor(Math.random() * 10);
+        //     var randomModule = 0;
+        //
+        //     switch (randomModule) {
+        //       case 0:
+        //         ctx.beginPath();
+        //         ctx.moveTo(moduleW*cols,moduleH*rows);
+        //         ctx.lineTo((moduleW/2)+moduleW*cols,(moduleH/2)+moduleH*rows);
+        //         ctx.lineTo((moduleW)+moduleW*cols, moduleH*rows);
+        //         ctx.lineTo(moduleW*cols, moduleH*rows);
+        //         ctx.closePath();
+        //         ctx.fillStyle = "black";
+        //         ctx.fill();
+        //
+        //         ctx.beginPath();
+        //         ctx.moveTo(moduleW*cols,(moduleH*rows)+moduleH);
+        //         ctx.lineTo((moduleW/2)+moduleW*cols,(moduleH/2)+moduleH*rows);
+        //         ctx.lineTo((moduleW)+moduleW*cols, (moduleH*rows)+moduleH);
+        //         ctx.lineTo(moduleW*cols, (moduleH*rows)+moduleH);
+        //         ctx.closePath();
+        //         ctx.fillStyle = "rgba(0,0,0,.1)";
+        //         ctx.fill();
+        //         break;
+        //
+        //       case 1:
+        //         ctx.beginPath();
+        //         ctx.moveTo(moduleW*cols,(moduleH*rows)+moduleH);
+        //         ctx.lineTo((moduleW/2)+moduleW*cols,(moduleH/2)+moduleH*rows);
+        //         ctx.lineTo((moduleW)+moduleW*cols, (moduleH*rows)+moduleH);
+        //         ctx.lineTo(moduleW*cols, (moduleH*rows)+moduleH);
+        //         ctx.closePath();
+        //         ctx.fillStyle = "black";
+        //         ctx.fill();
+        //         break;
+        //
+        //       case 2:
+        //         ctx.beginPath();
+        //         ctx.moveTo(moduleW*cols,(moduleH*rows)+moduleH);
+        //         ctx.lineTo((moduleW/2)+moduleW*cols,(moduleH/2)+moduleH*rows);
+        //         ctx.lineTo((moduleW)+moduleW*cols, (moduleH*rows)+moduleH);
+        //         ctx.lineTo(moduleW*cols, moduleH*rows);
+        //         ctx.closePath();
+        //         ctx.fillStyle = "black";
+        //         ctx.fill();
+        //         break;
+        //
+        //       case 3:
+        //         ctx.beginPath();
+        //         ctx.moveTo((moduleW*cols)+moduleW,moduleH*rows);
+        //         ctx.lineTo((moduleW/2)+moduleW*cols,(moduleH/2)+moduleH*rows);
+        //         ctx.lineTo((moduleW*cols)+moduleW, (moduleH*rows)+moduleH);
+        //         ctx.lineTo((moduleW*cols)+moduleW,moduleH*rows);
+        //         ctx.closePath();
+        //         ctx.fillStyle = "black";
+        //         ctx.fill();
+        //         break;
+        //
+        //       case 4:
+        //         ctx.beginPath();
+        //         ctx.moveTo(moduleW*cols,moduleH*rows);
+        //         ctx.lineTo((moduleW*cols)+moduleW,moduleH*rows);
+        //         ctx.lineTo((moduleW*cols)+moduleW,(moduleH*rows)+moduleH);
+        //         ctx.lineTo(moduleW*cols,moduleH*rows);
+        //         ctx.closePath();
+        //         ctx.fillStyle = "black";
+        //         ctx.fill();
+        //         break;
+        //
+        //       case 5:
+        //         ctx.beginPath();
+        //         ctx.moveTo(moduleW*cols,moduleH*rows);
+        //         ctx.lineTo(moduleW*cols,(moduleH*rows)+moduleH);
+        //         ctx.lineTo((moduleW*cols)+moduleW,(moduleH*rows)+moduleH);
+        //         ctx.lineTo(moduleW*cols,moduleH*rows);
+        //         ctx.closePath();
+        //         ctx.fillStyle = "black";
+        //         ctx.fill();
+        //         break;
+        //
+        //       case 6:
+        //         ctx.beginPath();
+        //         ctx.moveTo(moduleW*cols,moduleH*rows);
+        //         ctx.lineTo(moduleW*cols,(moduleH*rows)+moduleH);
+        //         ctx.lineTo((moduleW*cols)+moduleW,moduleH*rows);
+        //         ctx.lineTo(moduleW*cols,moduleH*rows);
+        //         ctx.closePath();
+        //         ctx.fillStyle = "black";
+        //         ctx.fill();
+        //         break;
+        //
+        //       case 7:
+        //         ctx.beginPath();
+        //         ctx.moveTo((moduleW*cols)+moduleW,moduleH*rows);
+        //         ctx.lineTo((moduleW*cols)+moduleW,(moduleH*rows)+moduleH);
+        //         ctx.lineTo(moduleW*cols,(moduleH*rows)+moduleH);
+        //         ctx.lineTo((moduleW*cols)+moduleW,moduleH*rows);
+        //         ctx.closePath();
+        //         ctx.fillStyle = "black";
+        //         ctx.fill();
+        //         break;
+        //
+        //       case 8:
+        //         ctx.beginPath();
+        //         ctx.moveTo(moduleW*cols,moduleH*rows);
+        //         ctx.lineTo((moduleW*cols)+moduleW,moduleH*rows);
+        //         ctx.lineTo(moduleW*cols,(moduleH*rows)+moduleH);
+        //         ctx.lineTo((moduleW*cols)+moduleW,(moduleH*rows)+moduleH);
+        //         ctx.lineTo(moduleW*cols,moduleH*rows);
+        //         ctx.closePath();
+        //         ctx.fillStyle = "black";
+        //         ctx.fill();
+        //         break;
+        //
+        //       case 9:
+        //         ctx.beginPath();
+        //         ctx.moveTo(moduleW*cols,moduleH*rows);
+        //         ctx.lineTo((moduleW*cols)+moduleW,(moduleH*rows)+moduleH);
+        //         ctx.lineTo((moduleW*cols)+moduleW,moduleH*rows);
+        //         ctx.lineTo(moduleW*cols,(moduleH*rows)+moduleH);
+        //         ctx.lineTo(moduleW*cols,moduleH*rows);
+        //         ctx.closePath();
+        //         ctx.fillStyle = "black";
+        //         ctx.fill();
+        //         break;
+        //
+        //     }
+        //     if (cols==modulesColumns) {cols = 0;}
+        //   }
+        // }
+
+      }
+    }
+    window.onload = modulos;
+  </script>
+  <style>
+
+    body {
+      background-color: #FFDE00;
+    }
+    #canvas {
+      width: 100%;
+      max-width: 660px;
+      height: auto;
+    }
+  </style>
+ </head>
+ <body>
+   <canvas id="canvas" width="660" height="550"></canvas>
+ </body>
+</html>

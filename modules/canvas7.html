@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <script type="application/javascript">
+    function draw() {
+      var canvas = document.getElementById('canvas');
+      if (canvas.getContext) {
+        var ctx = canvas.getContext('2d');
+        var canvasWidth = canvas.width;
+        var canvasHeight = canvas.height;
+        var moduleW = 110;
+        var moduleH = 110;
+        var modulesColumns = 6;
+        var modulesRows = 5;
+        var modulesN = modulesColumns * modulesRows;
+
+        var requestAnimationFrame = window.requestAnimationFrame;
+        ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
+        for (var rows=0; rows<modulesRows; rows++) {
+
+          for (var cols=0; cols<modulesColumns; cols++) {
+
+            var randomModule = Math.floor(Math.random() * 10);
+            // var randomModule = 0;
+
+            switch (randomModule) {
+              case 0:
+                ctx.beginPath();
+                ctx.moveTo(moduleW*cols,moduleH*rows);
+                ctx.lineTo((moduleW/2)+moduleW*cols,(moduleH/2)+moduleH*rows);
+                ctx.lineTo((moduleW)+moduleW*cols, moduleH*rows);
+                ctx.lineTo(moduleW*cols, moduleH*rows);
+                ctx.closePath();
+                ctx.fillStyle = "black";
+                ctx.fill();
+                break;
+
+              case 1:
+                ctx.beginPath();
+                ctx.moveTo(moduleW*cols,(moduleH*rows)+moduleH);
+                ctx.lineTo((moduleW/2)+moduleW*cols,(moduleH/2)+moduleH*rows);
+                ctx.lineTo((moduleW)+moduleW*cols, (moduleH*rows)+moduleH);
+                ctx.lineTo(moduleW*cols, (moduleH*rows)+moduleH);
+                ctx.closePath();
+                ctx.fillStyle = "black";
+                ctx.fill();
+                break;
+
+              case 2:
+                ctx.beginPath();
+                ctx.moveTo(moduleW*cols,(moduleH*rows)+moduleH);
+                ctx.lineTo((moduleW/2)+moduleW*cols,(moduleH/2)+moduleH*rows);
+                ctx.lineTo((moduleW)+moduleW*cols, (moduleH*rows)+moduleH);
+                ctx.lineTo(moduleW*cols, moduleH*rows);
+                ctx.closePath();
+                ctx.fillStyle = "black";
+                ctx.fill();
+                break;
+
+              case 3:
+                ctx.beginPath();
+                ctx.moveTo((moduleW*cols)+moduleW,moduleH*rows);
+                ctx.lineTo((moduleW/2)+moduleW*cols,(moduleH/2)+moduleH*rows);
+                ctx.lineTo((moduleW*cols)+moduleW, (moduleH*rows)+moduleH);
+                ctx.lineTo((moduleW*cols)+moduleW,moduleH*rows);
+                ctx.closePath();
+                ctx.fillStyle = "black";
+                ctx.fill();
+                break;
+
+              case 4:
+                ctx.beginPath();
+                ctx.moveTo(moduleW*cols,moduleH*rows);
+                ctx.lineTo((moduleW*cols)+moduleW,moduleH*rows);
+                ctx.lineTo((moduleW*cols)+moduleW,(moduleH*rows)+moduleH);
+                ctx.lineTo(moduleW*cols,moduleH*rows);
+                ctx.closePath();
+                ctx.fillStyle = "black";
+                ctx.fill();
+                break;
+
+              case 5:
+                ctx.beginPath();
+                ctx.moveTo(moduleW*cols,moduleH*rows);
+                ctx.lineTo(moduleW*cols,(moduleH*rows)+moduleH);
+                ctx.lineTo((moduleW*cols)+moduleW,(moduleH*rows)+moduleH);
+                ctx.lineTo(moduleW*cols,moduleH*rows);
+                ctx.closePath();
+                ctx.fillStyle = "black";
+                ctx.fill();
+                break;
+
+              case 6:
+                ctx.beginPath();
+                ctx.moveTo(moduleW*cols,moduleH*rows);
+                ctx.lineTo(moduleW*cols,(moduleH*rows)+moduleH);
+                ctx.lineTo((moduleW*cols)+moduleW,moduleH*rows);
+                ctx.lineTo(moduleW*cols,moduleH*rows);
+                ctx.closePath();
+                ctx.fillStyle = "black";
+                ctx.fill();
+                break;
+
+              case 7:
+                ctx.beginPath();
+                ctx.moveTo((moduleW*cols)+moduleW,moduleH*rows);
+                ctx.lineTo((moduleW*cols)+moduleW,(moduleH*rows)+moduleH);
+                ctx.lineTo(moduleW*cols,(moduleH*rows)+moduleH);
+                ctx.lineTo((moduleW*cols)+moduleW,moduleH*rows);
+                ctx.closePath();
+                ctx.fillStyle = "black";
+                ctx.fill();
+                break;
+
+              case 8:
+                ctx.beginPath();
+                ctx.moveTo(moduleW*cols,moduleH*rows);
+                ctx.lineTo((moduleW*cols)+moduleW,moduleH*rows);
+                ctx.lineTo(moduleW*cols,(moduleH*rows)+moduleH);
+                ctx.lineTo((moduleW*cols)+moduleW,(moduleH*rows)+moduleH);
+                ctx.lineTo(moduleW*cols,moduleH*rows);
+                ctx.closePath();
+                ctx.fillStyle = "black";
+                ctx.fill();
+                break;
+
+              case 9:
+                ctx.beginPath();
+                ctx.moveTo(moduleW*cols,moduleH*rows);
+                ctx.lineTo((moduleW*cols)+moduleW,(moduleH*rows)+moduleH);
+                ctx.lineTo((moduleW*cols)+moduleW,moduleH*rows);
+                ctx.lineTo(moduleW*cols,(moduleH*rows)+moduleH);
+                ctx.lineTo(moduleW*cols,moduleH*rows);
+                ctx.closePath();
+                ctx.fillStyle = "black";
+                ctx.fill();
+                break;
+
+            }
+            if (cols==modulesColumns) {cols = 0;}
+          }
+        }
+        // requestAnimationFrame(draw);
+      }
+    }
+    window.onload = draw;
+  </script>
+  <style>
+
+    body {
+      background-color: #FFDE00;
+    }
+    #canvas {
+      width: 100%;
+      max-width: 660px;
+      height: auto;
+    }
+  </style>
+ </head>
+ <body>
+   <canvas id="canvas" width="660" height="550"></canvas>
+ </body>
+</html>

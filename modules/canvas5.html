@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+ <head>
+  <meta charset="utf-8"/>
+  <script type="application/javascript">
+    function draw() {
+      var canvas = document.getElementById("canvas");
+      if (canvas.getContext) {
+        var ctx = canvas.getContext('2d');
+
+        var canvasWidth = canvas.width;
+        var canvasHeight = canvas.height;
+        var moduleOpacity1 = 1;
+        var opacityFlag1 = false;
+        var moduleOpacity2 = 0;
+        var opacityFlag2 = true;
+        // var opacitySpeed = 100+(Math.random()*1000);
+        var moduleW = 110;
+        var moduleH = 110;
+        var modulesColumns = 6;
+        var modulesRows = 5;
+        var modulesN = modulesColumns * modulesRows;
+        // console.log(opacitySpeed);
+
+        var modules = new Array();
+
+        function Modules (alpha,speed,col,row) {
+          this.alpha = alpha;
+          this.speed = speed;
+          this.col = col;
+          this.row = row;
+          this.opacitySpeed = 100+(Math.random()*1000);
+        }
+
+        Modules.prototype.update = function () {
+          if (moduleOpacity1 <= 0) {
+            opacityFlag1 = true;
+            opacityFlag2 = false;
+          } else if (moduleOpacity1 >= 1) {
+            opacityFlag1 = false;
+            opacityFlag2 = true;
+          }
+
+          if (opacityFlag1) {
+            moduleOpacity1 += 1/opacitySpeed;
+            moduleOpacity2 -= 1/opacitySpeed;
+          } else {
+            moduleOpacity1 -= 1/opacitySpeed;
+            moduleOpacity2 += 1/opacitySpeed;
+          }
+
+          ctx.beginPath();
+          ctx.moveTo(110,0);
+          ctx.lineTo(55,55);
+          ctx.lineTo(110,110);
+          ctx.closePath();
+          ctx.fillStyle = "rgba(0,0,0,"+moduleOpacity1+")";
+          ctx.fill();
+
+          ctx.beginPath();
+          ctx.moveTo(0,0);
+          ctx.lineTo(55,55);
+          ctx.lineTo(0,110);
+          ctx.closePath();
+          ctx.fillStyle = "rgba(0,0,0,"+moduleOpacity2+")";
+          ctx.fill();
+
+        }
+
+        function createModules () {
+          var modulo = new Modules();
+          modules.push(modulo);
+        }
+        createModules();
+
+        
+        function drawModule() {
+
+          ctx.clearRect(0, 0, canvasWidth, canvasHeight);
+
+
+
+
+
+          // console.log(opacityFlag, moduleOpacity);
+
+          requestAnimationFrame(drawModule)
+        }
+        drawModule();
+      }
+    }
+    window.onload = draw;
+  </script>
+
+ </head>
+ <body>
+   <canvas id="canvas" width="660" height="550"></canvas>
+ </body>
+</html>

@@ -1,0 +1,354 @@
+.modules-container {
+  /* width: 660px; */
+  width: 100%;
+  height: auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+  grid-column-gap: 0;
+}
+.modulo {
+  /* display: inline-block; */
+  width: 0;
+  height: 0;
+  margin: 0;
+  padding: 0;
+  border-top: solid #FFDE00 1em;
+  border-bottom: solid #FFDE00 1em;
+  border-left: solid #FFDE00 1em;
+  border-right: solid #FFDE00 1em;
+  transform: scale(0.5, 0.5);
+}
+
+/*Animacion 1*/
+@keyframes animation-1 {
+    0%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid #FFDE00 1em;
+    }
+    25%   {
+      border-top: solid black 1em;
+      border-bottom: solid black 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid #FFDE00 1em;
+    }
+    50%  {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid black 1em;
+      border-right: solid black 1em;
+    }
+    75%  {
+      border-top: solid black 1em;
+      border-bottom: solid black 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid #FFDE00 1em;
+    }
+    100%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid #FFDE00 1em;
+    }
+}
+.animation-1 {
+  animation-name: animation-1;
+  animation-duration: 20s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(1, 0, 0, 1);
+}
+
+/*Animacion 2*/
+@keyframes animation-2 {
+    0%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid #FFDE00 1em;
+    }
+    25%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid black 1em;
+      border-right: solid black 1em;
+    }
+    50%  {
+      border-top: solid black 1em;
+      border-bottom: solid black 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid #FFDE00 1em;
+    }
+    75%  {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid black 1em;
+      border-right: solid black 1em;
+    }
+    100%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid #FFDE00 1em;
+    }
+}
+.animation-2 {
+  animation-name: animation-2;
+  animation-duration: 24s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(1, 0, 0, 1);
+}
+
+/*Animacion 3*/
+@keyframes animation-3 {
+    0%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid #FFDE00 1em;
+    }
+    25%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid black 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid black 1em;
+    }
+    50%  {
+      border-top: solid black 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid black 1em;
+      border-right: solid #FFDE00 1em;
+    }
+    75%  {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid black 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid black 1em;
+    }
+    100%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid #FFDE00 1em;
+    }
+}
+.animation-3 {
+  animation-name: animation-3;
+  animation-duration: 28s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(1, 0, 0, 1);
+}
+
+/*Animacion 4*/
+@keyframes animation-4 {
+    0%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid #FFDE00 1em;
+    }
+    25%   {
+      border-top: solid black 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid black 1em;
+      border-right: solid #FFDE00 1em;
+    }
+    50%  {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid black 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid black 1em;
+    }
+    75%  {
+      border-top: solid black 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid black 1em;
+      border-right: solid #FFDE00 1em;
+    }
+    100%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid #FFDE00 1em;
+    }
+}
+.animation-4 {
+  animation-name: animation-4;
+  animation-duration: 32s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(1, 0, 0, 1);
+}
+
+/*Animacion 5*/
+@keyframes animation-5 {
+    0%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid #FFDE00 1em;
+    }
+    25%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid black 1em;
+      border-left: solid black 1em;
+      border-right: solid #FFDE00 1em;
+    }
+    50%  {
+      border-top: solid black 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid black 1em;
+    }
+    75%  {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid black 1em;
+      border-left: solid black 1em;
+      border-right: solid #FFDE00 1em;
+    }
+    100%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid #FFDE00 1em;
+    }
+}
+.animation-5 {
+  animation-name: animation-5;
+  animation-duration: 22s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(1, 0, 0, 1);
+}
+
+/*Animacion 6*/
+@keyframes animation-6 {
+    0%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid #FFDE00 1em;
+    }
+    25%   {
+      border-top: solid black 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid black 1em;
+    }
+    50%  {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid black 1em;
+      border-left: solid black 1em;
+      border-right: solid #FFDE00 1em;
+    }
+    75%  {
+      border-top: solid black 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid black 1em;
+    }
+    100%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid #FFDE00 1em;
+    }
+}
+.animation-6 {
+  animation-name: animation-6;
+  animation-duration: 26s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(1, 0, 0, 1);
+}
+
+/*Animacion 7*/
+@keyframes animation-7 {
+    0%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid #FFDE00 1em;
+    }
+    20%   {
+      border-top: solid black 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid #FFDE00 1em;
+    }
+    40%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid black 1em;
+    }
+    60%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid black 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid #FFDE00 1em;
+    }
+    80%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid black 1em;
+      border-right: solid #FFDE00 1em;
+    }
+    100%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid #FFDE00 1em;
+    }
+
+}
+.animation-7 {
+  animation-name: animation-7;
+  animation-duration: 40s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(1, 0, 0, 1);
+}
+
+/*Animacion 8*/
+@keyframes animation-8 {
+    0%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid #FFDE00 1em;
+    }
+    20%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid black 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid #FFDE00 1em;
+    }
+    40%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid black 1em;
+      border-right: solid #FFDE00 1em;
+    }
+    60%   {
+      border-top: solid black 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid #FFDE00 1em;
+    }
+    80%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid black 1em;
+    }
+    100%   {
+      border-top: solid #FFDE00 1em;
+      border-bottom: solid #FFDE00 1em;
+      border-left: solid #FFDE00 1em;
+      border-right: solid #FFDE00 1em;
+    }
+
+}
+.animation-8 {
+  animation-name: animation-8;
+  animation-duration: 32s;
+  animation-iteration-count: infinite;
+  animation-timing-function: cubic-bezier(1, 0, 0, 1);
+}
