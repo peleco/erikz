@@ -568,6 +568,10 @@ h4 {
 .cm-img-01 {
   grid-column: span 7;
 }
+.cm-img-04 {
+  /* margin-top: 30rem; */
+  margin-top: 200%;
+}
 .cm-img-05 {
   grid-column: 5 / span 7;
 }
