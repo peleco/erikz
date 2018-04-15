@@ -332,6 +332,33 @@ h4 {
   content: "";
   border-radius: 0px 0px 8px 8px;
 }
+
+.project-img-desktop-big {
+  grid-column: span 7;
+  /* grid-column-end: 8; */
+  border-radius: 8px;
+  box-shadow: 8px 16px 92px rgba(0, 0, 0, 0.24), 0px 16px 16px rgba(0, 0, 0, 0.16);
+}
+.project-img-desktop-big::before {
+  display: block;
+  width: 100%;
+  /* height: 2em; */
+  padding-top: 4.109589041095891%;
+  background-color: black;
+  content: "";
+  border-radius: 8px 8px 0px 0px;
+}
+.project-img-desktop-big::after {
+  display: block;
+  width: 100%;
+  /* height: 1.2em; */
+  /* height: 2em; */
+  padding-top: 4.109589041095891%;
+  background-color: black;
+  content: "";
+  border-radius: 0px 0px 8px 8px;
+}
+
 .project-img-mobile {
   grid-column: span 2;
   border-radius: 16px;
@@ -507,6 +534,25 @@ h4 {
   max-width: 100%;
   height: auto;
 }
+
+@media only screen and (max-width: 62.5rem) {
+  .project-text {
+    grid-column-start: 1;
+    grid-column-end: 11;
+  }
+  .project-data {
+    margin-top: 2.5rem;
+    grid-column-start: 1;
+    grid-column-end: 11;
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-column-gap: var(--grid-gutter);
+    align-items: start;
+  }
+  .project-data > div {
+    grid-column: span 3;
+  }
+}
 /* Project Club Med --------------------------------------------------------- */
 /* .project-images .project-img-desktop {
   grid-column: span 7;
@@ -516,7 +562,7 @@ h4 {
   height: auto;
   margin-bottom: 2.5rem;
 }
-.align-end {
+.cm-img-03 {
   align-self: end;
 }
 .cm-img-01 {
@@ -534,6 +580,30 @@ h4 {
   grid-column: 3 / span 7;
 }
 
+@media only screen and (max-width: 62.5rem) {
+  .cm-img-01, .cm-img-05, .cm-img-08 {
+    grid-column: span 10;
+  }
+  .cm-img-02 {
+    margin-top: 5rem;
+  }
+  .cm-img-03 {
+    /* margin-top: 2.5rem; */
+    grid-column: 7 / span 4;
+  }
+  .cm-img-04 {
+    display: none;
+  }
+  .cm-img-07 {
+    margin-top: 5rem;
+    grid-column: span 7;
+  }
+  .project-interaction-demo {
+    grid-column: 1 / span 10;
+    height: auto;
+    margin-bottom: 2.5rem;
+  }
+}
 
 
 
