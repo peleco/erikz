@@ -570,6 +570,7 @@ h4 {
 }
 .cm-img-04 {
   /* margin-top: 30rem; */
+  grid-column: 3 / span 2;
   margin-top: 200%;
 }
 .cm-img-05 {
