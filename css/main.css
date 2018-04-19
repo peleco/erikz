@@ -104,7 +104,9 @@ textarea {
    ========================================================================== */
 :root {
  --grid-gutter: 2.5rem; /*40px*/
+ --grid-gutter-mobile: 1.25rem; /*20px*/
  --grid-margin: 5rem; /*60px*/
+ --grid-margin-mobile: 2rem; /*30px*/
 }
 
 body {
@@ -122,6 +124,11 @@ body {
   max-width: 90rem;
   /* min-width: 60rem; */
   margin: auto;
+}
+@media only screen and (max-width: 37.5rem) {
+  .layout-container {
+    padding: 0 var(--grid-margin-mobile);
+  }
 }
 h3 {
   font-size: 1.75rem;
@@ -155,6 +162,11 @@ h4 {
   grid-template-columns: repeat(12, 1fr);
   grid-column-gap: var(--grid-gutter);
   align-items: center;
+}
+@media only screen and (max-width: 37.5rem) {
+  .header-home .layout-container {
+    grid-column-gap: var(--grid-gutter-mobile);
+  }
 }
 .intro {
   width: 100%;
@@ -213,6 +225,11 @@ h4 {
   align-items: center;
   margin-bottom: 10rem;
 }
+@media only screen and (max-width: 37.5rem) {
+  .projects-home-item {
+    grid-column-gap: var(--grid-gutter-mobile);
+  }
+}
 .projects-home-item-number {
   margin: 0;
   text-align: left;
@@ -234,6 +251,11 @@ h4 {
   align-items: center;
   /* background-color: grey; */
 }
+@media only screen and (max-width: 37.5rem) {
+  .projects-home .col1 {
+    grid-column-gap: var(--grid-gutter-mobile);
+  }
+}
 .projects-home-item-texte {
   text-align: left;
   grid-column-start: 2;
@@ -250,6 +272,7 @@ h4 {
   margin: 2.5rem 0 0 0;
 }
 .projects-actions a {
+  display: inline-block;
   text-decoration: none;
   color: black;
   font-weight: bold;
@@ -265,6 +288,12 @@ h4 {
   grid-column-gap: var(--grid-gutter);
   align-items: center;
 }
+@media only screen and (max-width: 37.5rem) {
+  .projects-home .col2 {
+    grid-column-gap: var(--grid-gutter-mobile);
+  }
+}
+
 .projects-home .col2 img {
   max-width: 100%;
   height: auto;
@@ -423,6 +452,11 @@ h4 {
   align-items: start;
   margin-top: 15.625rem;
 }
+@media only screen and (max-width: 37.5rem) {
+  .information-home .layout-container {
+    grid-column-gap: var(--grid-gutter-mobile);
+  }
+}
 .information-home .layout-container > div {
   /* grid-column: span 5; */
   margin-bottom: 6.25rem;
@@ -442,6 +476,24 @@ h4 {
 .information-home-languages {
   grid-column-start: 7;
   grid-column-end: 13;
+}
+@media only screen and (max-width: 37.5rem) {
+  .information-home-clients {
+    grid-column-start: 1;
+    grid-column-end: 13;
+  }
+  .information-home-companies {
+    grid-column-start: 1;
+    grid-column-end: 13;
+  }
+  .information-home-tools {
+    grid-column-start: 1;
+    grid-column-end: 13;
+  }
+  .information-home-languages {
+    grid-column-start: 1;
+    grid-column-end: 13;
+  }
 }
 
 /* Footer --------------------------------------------------------- */
