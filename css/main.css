@@ -514,6 +514,16 @@ h3 {
   grid-column-gap: var(--grid-gutter);
   align-items: start;
 }
+@media only screen and (max-width: 62.5rem) {
+  .project-images {
+    grid-column-gap: var(--grid-gutter-tablet);
+  }
+}
+@media only screen and (max-width: 37.5rem) {
+  .project-images {
+    grid-column-gap: var(--grid-gutter-mobile);
+  }
+}
 .project-images-label {
   grid-column: 2 / span 5;
   margin-bottom: 1.25rem;
