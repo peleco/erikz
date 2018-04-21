@@ -475,6 +475,11 @@ h3 {
     grid-column: span 4;
   }
 }
+@media only screen and (max-width: 25rem) {
+  .project-data > div {
+    grid-column: span 12;
+  }
+}
 .project-text p {
   margin-top: 0;
   padding-top: 0;
