@@ -100,7 +100,7 @@ textarea {
 }
 
 /* ==========================================================================
-   Author's custom styles
+   Author's custom styles - coded by Erik Zitzermann
    ========================================================================== */
 :root {
  --grid-gutter: 2.5rem; /*40px*/
@@ -155,7 +155,6 @@ h2 {
   line-height: 2.1875rem;
   margin: 0;
   padding: 0;
-  /* margin-bottom: 2.5rem; */
 }
 h3 {
   font-size: 1.125rem;
@@ -164,10 +163,6 @@ h3 {
   margin: 0;
   padding: 0;
 }
-/* p {
-  margin: 0;
-  padding: 0;
-} */
 
 /* Home Header --------------------------------------------------------- */
 #canvas {
@@ -381,7 +376,6 @@ h3 {
   padding: 1.875rem 0;
   margin-top: 5rem;
   color: white;
-  /* font-weight: bold; */
 }
 .footer p {
   grid-column: span 12;
@@ -489,27 +483,9 @@ h3 {
 .project-text .projects-actions {
   margin-top: 2.5rem;
 }
-/* .project  .layout-container{
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-column-gap: var(--grid-gutter);
-  align-items: center;
-} */
 .project h3 {
   grid-column: 2 / span 11;
-  /* grid-column-end: 13; */
 }
-
-
-/* .project-text:first-child p {
-  margin-top: 0;
-} */
-
-/* .demo-interaction {
- width: 608px;
- height: auto;
- margin: 2em;
-} */
 .project-data-content {
   margin-bottom: 1.25rem;
   font-weight: bold;
@@ -549,16 +525,6 @@ h3 {
   grid-column: span 12;
   margin-bottom: 5rem;
 }
-/* .project-images img {
-  max-width: 100%;
-  height: auto;
-} */
-
-
-/* Project Club Med --------------------------------------------------------- */
-/* .project-images .project-img-desktop {
-  grid-column: span 7;
-} */
 .project-interaction-demo {
   grid-column: 1 / span 12;
   height: auto;
