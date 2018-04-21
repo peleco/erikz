@@ -414,11 +414,13 @@ h3 {
 }
 @media only screen and (max-width: 62.5rem) {
   .project-info {
+    margin: 5rem 0;
     grid-column-gap: var(--grid-gutter-tablet);
   }
 }
 @media only screen and (max-width: 37.5rem) {
   .project-info {
+    margin: 3.75rem 0;
     grid-column-gap: var(--grid-gutter-mobile);
   }
 }
