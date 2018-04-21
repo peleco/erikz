@@ -419,7 +419,7 @@ h3 {
 }
 @media only screen and (max-width: 37.5rem) {
   .project-info {
-    grid-column-gap: var(--grid-margin-mobile);
+    grid-column-gap: var(--grid-gutter-mobile);
   }
 }
 .project-info h2 {
