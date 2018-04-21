@@ -435,6 +435,11 @@ h3 {
 .project-text {
   grid-column: 2 / span 6;
 }
+@media only screen and (max-width: 68.75rem) {
+  .project-text {
+    grid-column: 2 / span 7;
+  }
+}
 @media only screen and (max-width: 62.5rem) {
   .project-text {
     grid-column: 2 / span 10;
