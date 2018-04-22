@@ -235,6 +235,9 @@ h3 {
   padding: 0;
   text-align: center;
 }
+/* .projects-home .layout-container {
+  grid-auto-rows: 1fr
+} */
 .projects-home h3 {
   grid-column: span 12;
   padding: 0;
