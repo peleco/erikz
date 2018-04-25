@@ -520,7 +520,8 @@ h3 {
 }
 .project-images-label {
   grid-column: 2 / span 5;
-  margin-bottom: 1.25rem;
+  /* margin-bottom: 1.25rem; */
+  margin-bottom: 5rem;
 }
 @media only screen and (max-width: 62.5rem) {
   .project-images-label {
