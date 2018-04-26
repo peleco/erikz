@@ -495,6 +495,7 @@ h3 {
 }
 .project-text p {
   margin-top: 0;
+  margin-bottom: 1.875rem;
   padding-top: 0;
 }
 .project-text .projects-actions {
@@ -504,7 +505,7 @@ h3 {
   grid-column: 2 / span 11;
 }
 .project-data-content {
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.875rem;
   font-weight: bold;
 }
 .project-images {
