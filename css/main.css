@@ -655,7 +655,7 @@ h3 {
   }
 }
 .project-images-label {
-  grid-column: 2 / span 5;
+  grid-column: 2 / span 10;
   /* margin-bottom: 1.25rem; */
   margin-bottom: 2.5rem;
 }
