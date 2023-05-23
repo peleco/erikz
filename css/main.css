@@ -394,7 +394,10 @@ h3 {
   width: 100%;
   height: auto;
 }
-
+.project-img video {
+  width: 100%;
+  height: auto;
+}
 .orange-videos {
   background-color: #F2F2F2;
   margin: 10rem 0;
