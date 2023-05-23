@@ -400,15 +400,18 @@ h3 {
 }
 .orange-videos {
   background-color: #F2F2F2;
-  margin: 10rem 0;
+  padding: 7rem 0;
+  display: grid;
+  grid-column: span 12;
+  margin-bottom: 5rem;
 }
 .orange-videos .video1 {
   grid-column-start: 3;
-  grid-column-end: 7;
+  grid-column-end: 6;
 }
 .orange-videos .video2 {
-  grid-column-start: 7;
-  grid-column-end: 10;
+  grid-column-start: 8;
+  grid-column-end: 11;
 }
 /* .projects-home .col2 {
   grid-column: span 5;
