@@ -395,7 +395,7 @@ h3 {
     grid-column-end: 13;
   }
 } */
-.project-img img {
+.project-img img, .project-img-2col img {
   width: 100%;
   height: auto;
 }
