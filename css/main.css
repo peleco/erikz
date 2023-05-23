@@ -662,6 +662,7 @@ h3 {
 @media only screen and (max-width: 62.5rem) {
   .project-images-label {
     grid-column: 2 / span 8;
+    display: block;
   }
 }
 @media only screen and (max-width: 37.5rem) {
