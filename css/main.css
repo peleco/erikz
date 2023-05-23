@@ -678,7 +678,10 @@ h3 {
   height: auto;
   margin-bottom: 2.5rem;
 }
-
+.project-img-2col {
+  grid-column: span 6;
+  margin-bottom: 5rem;
+}
 /* .project-images video {
   width: 100% !important;
   height: auto !important;
