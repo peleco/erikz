@@ -413,6 +413,27 @@ h3 {
   grid-column-start: 8;
   grid-column-end: 11;
 }
+@media only screen and (max-width: 37.5rem) {
+  .orange-videos .video1 {
+    grid-column-start: 2;
+    grid-column-end: 7;
+  }
+  .orange-videos .video2 {
+    grid-column-start: 7;
+    grid-column-end: 12;
+  }
+}
+@media only screen and (max-width: 25rem) {
+  .orange-videos .video1 {
+    grid-column-start: 2;
+    grid-column-end: 12;
+  }
+  .orange-videos .video2 {
+    grid-column-start: 2;
+    grid-column-end: 12;
+    margin-top: 1.875rem;
+  }
+}
 /* .projects-home .col2 {
   grid-column: span 5;
 } */
