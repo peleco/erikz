@@ -390,10 +390,10 @@ h3 {
     grid-column-end: 13;
   }
 } */
-/* .project-img img {
+.project-img img {
   width: 100%;
   height: auto;
-} */
+}
 /* .projects-home .col2 {
   grid-column: span 5;
 } */
