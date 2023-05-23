@@ -312,7 +312,7 @@ h3 {
 
 
 .projects-home-item::before {
-  transition: all 1.5s cubic-bezier(0.340, 0.010, 0.010, 0.995);
+  transition: all 1.25s cubic-bezier(0.340, 0.010, 0.010, 0.995);
               /* transform .30s cubic-bezier(0.340, 0.010, 0.010, 0.995); */
   content: "";
   display: block;
@@ -335,17 +335,21 @@ h3 {
 .projects-home-item:hover {
   /* background-color: #FFDE00; */
   border-top: #FFDE00 solid 1px;
+  transition-duration: 1.25s;
   /* padding: 0 1.25rem; */
 }
 .projects-home-item:hover + .projects-home-item {
   border-top: #FFDE00 solid 1px;
+  transition-duration: 1.25s;
 }
 .projects-home-item:last-child {
-  transition: all .60s cubic-bezier(0.340, 0.010, 0.010, 0.995);
+  /* transition: all .60s cubic-bezier(0.340, 0.010, 0.010, 0.995); */
+  transition: all 1.25s cubic-bezier(0.340, 0.010, 0.010, 0.995);
   border-bottom: #000 solid 1px;
 } 
 .projects-home-item:last-child:hover {
   border-bottom: #FFDE00 solid 1px;
+  transition-duration: 1.25s;
 } 
 
 
