@@ -399,9 +399,13 @@ h3 {
   background-color: #F2F2F2;
   margin: 10rem 0;
 }
-.orange-videos video {
+.orange-videos .video1 {
   grid-column-start: 3;
   grid-column-end: 7;
+}
+.orange-videos .video2 {
+  grid-column-start: 7;
+  grid-column-end: 10;
 }
 /* .projects-home .col2 {
   grid-column: span 5;
