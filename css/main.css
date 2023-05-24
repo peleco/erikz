@@ -548,7 +548,7 @@ h3 {
     margin-bottom: 1.25rem;
 }
 .project-info {
-  margin: 6.25rem 0;
+  margin: 6.25rem 0 1.875rem 0;
   grid-column: span 12;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -665,7 +665,8 @@ h3 {
 .project-images-label {
   grid-column: 2 / span 10;
   /* margin-bottom: 1.25rem; */
-  margin-bottom: 2.5rem;
+  /* margin-bottom: 2.5rem; */
+  margin: 5rem 0 2.5rem 0;
 }
 @media only screen and (max-width: 62.5rem) {
   .project-images-label {
@@ -679,16 +680,16 @@ h3 {
 }
 .project-images .project-img {
   grid-column: span 12;
-  margin-bottom: 5rem;
+  margin-bottom: 1.875rem;
 }
 .project-interaction-demo {
   grid-column: 1 / span 12;
   height: auto;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.875rem;
 }
 .project-img-2col {
   grid-column: span 6;
-  margin-bottom: 5rem;
+  margin-bottom: 1.875rem;
 }
 /* .project-images video {
   width: 100% !important;
