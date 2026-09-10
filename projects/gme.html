@@ -3,7 +3,7 @@
     <head>
       <meta charset="utf-8">
       <meta http-equiv="x-ua-compatible" content="ie=edge">
-      <title>Erik Zitzermann — Graphic Designer</title>
+      <title>Erik Zitzermann — Green My Experience</title>
       <meta name="description" content="Portfolio of Erik Zitzermann">
       <meta name="author" content="Erik Zitzermann">
       <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -37,9 +37,9 @@
       <meta name="twitter:description" content="Portfolio of Erik Zitzermann" />
       <meta name="twitter:url" content="https://www.erikz.info/" />
 
-      <link rel="stylesheet" href="../css/normalize.css">
-      <link rel="stylesheet" href="../css/main.css">
-      <link rel="stylesheet" href="../fonts/stylesheet.css">
+      <link rel="stylesheet" href="/css/normalize.css">
+      <link rel="stylesheet" href="/css/main.css">
+      <link rel="stylesheet" href="/fonts/stylesheet.css">
 
     </head>
     <body>
@@ -57,38 +57,42 @@
 
           <div class="project-info">
 
-            <h2>Altarea website</h2>
+            <h2>Green My Experience</h2>
 
             <div class="project-text">
               <p>
-                Altarea develops shopping centers across France. They needed one website framework that could work for all of them, starting with Qwartz as the pilot, without becoming a generic template that erased each center's identity.
+                Green My Experience helps tour operators get GSTC-ready: it turns each sustainability requirement into assigned work, evidence and a deadline, so nothing slips. It is part of Overview Effect, where I lead design across the company.
               </p>
               <p>
-                That was the real problem: each shopping center needed to feel distinct, with its own visual identity, while running on the same underlying structure. A single fixed design would either flatten every center into the same look, or force a new build for each one. Neither was sustainable.
+                This was my first project built entirely with an AI-native process. I used Figma only for early explorations (logo, color), and from there everything was made directly in code, working with Claude and the other AI tools I could get my hands on. That is why there are no mockups or design files behind it: the design happened in the build.
               </p>
               <p>
-                The solution was to think of the whole site as a design system before that was the term I would have used for it. Every component was built to be adapted rather than duplicated: set a few parameters on a module and it could reconfigure itself into different layouts, list types and content structures across centers. I led art direction, interaction design and the initial UI design for the framework.
+                AI changed the execution, not the thinking. Working directly in code was a real acceleration, but the bottleneck was never speed, it was decisions, and those still take the time they take. The process stays, and the work is better for following it. Identity was the other hard part: these tools push you toward a default look, and getting past that took a lot of iteration, integration and documentation. I treated it as a design system from the start, not a set of screens.
               </p>
               <p>
-                The hardest part wasn't technical, it was editorial: making a system flexible enough to hold real personality without ever feeling like a declined template.
+                It was conceived from the start as more than a design system: global by intent, closer to a brand system than a component library, one source the whole ecosystem draws from. Today it runs the academy and the website, with part of the platform in place; social, presentations, online courses and the rest of the company's media are concepted and next. Fully responsive, on current standards, and still growing.
               </p>
-              <!-- <div class="projects-actions">
-                <a href="https://www.qwartz-92.com/" target="_blank">visit website <img class="external-link-arrow" src="/img/external-link-arrow.svg" alt="external link"></a>
-              </div> -->
+              <p>
+                The brand's identity came out of the graphics. The signature graphics are not static assets, they are code. Four engines, named by the shape of their vocabulary (polygon, route, vector, network), render every signature graphic on the site, including the one running in the hero. Each is a small, framework-agnostic module driven by config: set the geometry, the bands and the palette, and the same engine produces a still export or a live animation. The math lives in one canonical module that every surface uses, instead of one-off SVGs.
+              </p>
+
+              <div class="projects-actions">
+                <a href="https://greenmyexperience.com" target="_blank" rel="noopener">visit website <img class="external-link-arrow" src="/img/external-link-arrow.svg" alt="external link"></a>
+              </div>
             </div>
 
             <div class="project-data">
               <div>
                 <div class="project-data-label">Year</div>
-                <div class="project-data-content">2018</div>
+                <div class="project-data-content">2026</div>
               </div>
               <div>
                 <div class="project-data-label">Agency</div>
-                <div class="project-data-content">Altima°</div>
+                <div class="project-data-content">Overview Effect</div>
               </div>
               <div>
                 <div class="project-data-label">Role</div>
-                <div class="project-data-content">Art Direction<br>UI Design<br>Interaction Design</div>
+                <div class="project-data-content">UX Design<br>UI Design<br>Art Direction</div>
               </div>
             </div>
 
@@ -96,42 +100,15 @@
 
           <div class="project-images">
 
+            <!-- VIDEO DE LOS ENGINES (pendiente): exportar del Graphics Studio y dejar en
+                 /img/projects/gme/. Cuando esté, descomentar y ajustar el src.
             <div class="project-img">
-              <img src="/img/projects/altarea/alt-01.png" alt="Altarea">
+              <video width="100%" autoplay muted loop playsinline poster="/img/projects/gme/engine-poster.png">
+                <source src="/img/projects/gme/engine-route.mp4" type="video/mp4">
+              </video>
             </div>
-            <div class="project-img">
-              <img src="/img/projects/altarea/alt-02.png" alt="Altarea">
-            </div>
-            <div class="project-img">
-              <img src="/img/projects/altarea/alt-03.png" alt="Altarea">
-            </div>
-            <div class="project-img">
-              <img src="/img/projects/altarea/alt-04.png" alt="Altarea">
-            </div>
-
-            <p class="project-images-label">Some of the specifications of the list blocs, the idea of having just one component with different parameters that could work for the four types of list pages.</p>
-
-            <div class="project-img">
-              <img src="/img/projects/altarea/alt-05.png" alt="Altarea">
-            </div>
-            <div class="project-img">
-              <img src="/img/projects/altarea/alt-06.png" alt="Altarea">
-            </div>
-
-            <p class="project-images-label">The client space.</p>
-
-            <div class="project-img">
-              <img src="/img/projects/altarea/alt-07.png" alt="Altarea">
-            </div>
-
-            <div class="project-images-label">Carousel transition tests.</div>
-
-            <div class="project-img">
-            <video width="100%" controls>
-              <source src="/img/projects/altarea/altarea.mp4" type="video/mp4">
-              Your browser does not support the video tag.
-            </video>
-            </div>
+            <p class="project-images-label">One of the four engines running: route, in signature mode.</p>
+            -->
 
           </div>
         </div>
