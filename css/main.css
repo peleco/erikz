@@ -635,7 +635,7 @@ h3 {
   position: relative;
   z-index: 2;
   font-size: 1.5rem;
-  line-height: 1.15;
+  line-height: normal; /* igual que el nombre en la lista, para que el morph no escale */
   color: #000;
 }
 .topbar-graphic {
