@@ -1,0 +1,62 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+---
+
+<ProjectLayout
+  title="Altarea Website"
+  year="2018"
+  agency="Altima°"
+  role={["Art Direction", "UI Design", "Interaction Design"]}
+>
+  <p>
+    Altarea develops shopping centers across France. They needed one website framework that could work for all of them, starting with Qwartz as the pilot, without becoming a generic template that erased each center's identity.
+  </p>
+  <p>
+    That was the real problem: each shopping center needed to feel distinct, with its own visual identity, while running on the same underlying structure. A single fixed design would either flatten every center into the same look, or force a new build for each one. Neither was sustainable.
+  </p>
+  <p>
+    The solution was to think of the whole site as a design system before that was the term I would have used for it. Every component was built to be adapted rather than duplicated: set a few parameters on a module and it could reconfigure itself into different layouts, list types and content structures across centers. I led art direction, interaction design and the initial UI design for the framework.
+  </p>
+  <p>
+    The hardest part wasn't technical, it was editorial: making a system flexible enough to hold real personality without ever feeling like a declined template.
+  </p>
+
+  <Fragment slot="images">
+    <div class="project-img">
+      <img src="/img/projects/altarea/alt-01.png" alt="Altarea" />
+    </div>
+    <div class="project-img">
+      <img src="/img/projects/altarea/alt-02.png" alt="Altarea" />
+    </div>
+    <div class="project-img">
+      <img src="/img/projects/altarea/alt-03.png" alt="Altarea" />
+    </div>
+    <div class="project-img">
+      <img src="/img/projects/altarea/alt-04.png" alt="Altarea" />
+    </div>
+
+    <p class="project-images-label">Some of the specifications of the list blocs, the idea of having just one component with different parameters that could work for the four types of list pages.</p>
+
+    <div class="project-img">
+      <img src="/img/projects/altarea/alt-05.png" alt="Altarea" />
+    </div>
+    <div class="project-img">
+      <img src="/img/projects/altarea/alt-06.png" alt="Altarea" />
+    </div>
+
+    <p class="project-images-label">The client space.</p>
+
+    <div class="project-img">
+      <img src="/img/projects/altarea/alt-07.png" alt="Altarea" />
+    </div>
+
+    <div class="project-images-label">Carousel transition tests.</div>
+
+    <div class="project-img">
+      <video width="100%" controls>
+        <source src="/img/projects/altarea/altarea.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </Fragment>
+</ProjectLayout>

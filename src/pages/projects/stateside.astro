@@ -1,0 +1,48 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+---
+
+<ProjectLayout
+  title="Stateside Website"
+  year="2021"
+  agency="Stateside"
+  role={["Art Direction", "UX Design", "UI Design", "Interaction Design"]}
+>
+  <p>
+    Stateside is a nearshore talent company that connects businesses with senior professionals.
+  </p>
+  <p>
+    I led art direction and UX/UI for their website redesign, from concept through production. Using Atomic Design, I built a component library and a set of styles that unified how the company showed up across its digital presence.
+  </p>
+
+  <Fragment slot="images">
+    <div class="project-img">
+      <img src="/img/projects/stateside/stateside-1.png" alt="Stateside" />
+    </div>
+    <div class="project-img">
+      <img src="/img/projects/stateside/stateside-2.png" alt="Stateside" />
+    </div>
+    <div class="project-img">
+      <img src="/img/projects/stateside/stateside-3.png" alt="Stateside" />
+    </div>
+
+    <div class="project-images-label">An interaction test for the project bubbles. After trying different types of SVG animation, we ended up using Lottie, which improved both performance and smoothness.</div>
+
+    <div class="project-interaction-demo">
+      <p class="codepen" data-height="450" data-default-tab="html,result" data-slug-hash="MWVRpEL" data-user="erikz" style="height: 450px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+        <span>See the Pen <a href="https://codepen.io/erikz/pen/MWVRpEL">
+        Bubbles</a> by Erik (<a href="https://codepen.io/erikz">@erikz</a>)
+        on <a href="https://codepen.io">CodePen</a>.</span>
+      </p>
+      <script is:inline async src="https://cpwebassets.codepen.io/assets/embed/ei.js"></script>
+    </div>
+
+    <p class="project-images-label">An early interaction test for the capabilities carousel.</p>
+    <div class="project-img">
+      <video width="100%" controls>
+        <source src="/img/projects/stateside/carrousel.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </Fragment>
+</ProjectLayout>

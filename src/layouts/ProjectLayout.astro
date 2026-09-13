@@ -1,0 +1,72 @@
+---
+import Base from './Base.astro';
+
+const { title, year, agency, role = [], materials = [], website } = Astro.props;
+---
+
+<Base title={`Erik Zitzermann — ${title}`}>
+  <div class="project-topbar">
+    <div class="topbar-inner" style="view-transition-name: proj-box">
+      <a class="topbar-back" href="/" aria-label="Back to home">
+        <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="19" y1="12" x2="5" y2="12"></line>
+          <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+      </a>
+
+      <span class="topbar-divider" aria-hidden="true"></span>
+
+      <span class="topbar-title">{title}</span>
+
+      <span class="topbar-graphic" aria-hidden="true">
+        <canvas class="topbar-canvas" data-grid data-size="79" data-cols="3" data-rows="1" width="237" height="79"></canvas>
+      </span>
+    </div>
+  </div>
+
+  <div class="project">
+    <div class="layout-container">
+      <div class="project-info">
+        <div class="project-text">
+          <slot />
+          {website && (
+            <div class="projects-actions">
+              <a href={website} target="_blank" rel="noopener">visit website <img class="external-link-arrow" src="/img/external-link-arrow.svg" alt="external link" /></a>
+            </div>
+          )}
+        </div>
+
+        <div class="project-data">
+          {year && (
+            <div>
+              <div class="project-data-label">Year</div>
+              <div class="project-data-content">{year}</div>
+            </div>
+          )}
+          {agency && (
+            <div>
+              <div class="project-data-label">Agency</div>
+              <div class="project-data-content">{agency}</div>
+            </div>
+          )}
+          {role.length > 0 && (
+            <div>
+              <div class="project-data-label">Role</div>
+              <div class="project-data-content">{role.map((r, i) => (<Fragment>{i > 0 && <br />}{r}</Fragment>))}</div>
+            </div>
+          )}
+          {materials.length > 0 && (
+            <div>
+              <div class="project-data-label">Materials</div>
+              <div class="project-data-content">{materials.map((m, i) => (<Fragment>{i > 0 && <br />}{m}</Fragment>))}</div>
+            </div>
+          )}
+        </div>
+      </div>
+
+      <div class="project-images">
+        <slot name="images" />
+      </div>
+    </div>
+  </div>
+</Base>

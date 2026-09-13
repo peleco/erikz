@@ -1,0 +1,73 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+---
+
+<ProjectLayout
+  title="Orange Business Lounge"
+  year="2017-2018"
+  agency="Altima°"
+  role={["Art Direction", "UI Design", "Interaction Design"]}
+>
+  <p>
+    Orange Business Lounge is Orange's branch for business customers. We worked on two connected products: a redesign of the OBL mobile app and the My Service Space website, where customers track consumption, check contract information and reach support.
+  </p>
+  <p>
+    The work was phased: revive the legacy components first, then move toward a more user-centric design. The starting point was a shared design library, the first foundation for a design system that could carry across both the app and the website.
+  </p>
+
+  <Fragment slot="images">
+    <div class="project-img">
+      <img src="/img/projects/orange/obl-01.png" alt="Orange" />
+    </div>
+
+    <div class="project-img">
+      <img src="/img/projects/orange/obl-02.png" alt="Orange" />
+    </div>
+
+    <div class="project-images-label">Onboarding animations and prototypes.</div>
+
+    <div class="orange-videos layout-container">
+      <div class="video1">
+        <video width="100%" controls>
+          <source src="/img/projects/orange/onboarding_parallax.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+      <div class="video2">
+        <video width="100%" controls>
+          <source src="/img/projects/orange/onboarding-demo.mp4" type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
+      </div>
+    </div>
+
+    <p class="project-images-label">Messages and errors are a chance to show the brand's character and add some fun. We combined Orange's library illustrations with our own interventions.</p>
+
+    <div class="project-img">
+      <img src="/img/projects/orange/obl-03.png" alt="Orange" />
+    </div>
+
+    <p class="project-images-label">Orange already had a well-documented style guide, and that was the foundation for the design library. The job was to turn it into something usable across the different projects in the ecosystem.<br /><br />
+    We did a full inventory: recreating every component and documenting it in our files, so the same pieces stayed consistent from one project to the next.</p>
+
+    <div class="project-img">
+      <img src="/img/projects/orange/obl-04.png" alt="Orange" />
+    </div>
+
+    <p class="project-images-label">The style guide was solid but lacked responsive specs, so we added them, which let the designs adapt properly across screen sizes.</p>
+    <div class="project-img">
+      <img src="/img/projects/orange/obl-05.png" alt="Orange" />
+    </div>
+    <div class="project-img">
+      <img src="/img/projects/orange/obl-08.png" alt="Orange" />
+    </div>
+
+    <p class="project-images-label">This was a prototype for the Service Space Dashboard.</p>
+    <div class="project-img">
+      <video width="100%" controls>
+        <source src="/img/projects/orange/MSS-proto-3.mp4" type="video/mp4" />
+        Your browser does not support the video tag.
+      </video>
+    </div>
+  </Fragment>
+</ProjectLayout>

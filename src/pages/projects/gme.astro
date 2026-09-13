@@ -1,0 +1,42 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+---
+
+<ProjectLayout
+  title="Green My Experience Website"
+  year="2026"
+  agency="Overview Effect"
+  role={["UX Design", "UI Design", "Art Direction"]}
+  website="https://greenmyexperience.com"
+>
+  <p>
+    Green My Experience helps tour operators get GSTC-ready: it turns each sustainability requirement into assigned work, evidence and a deadline, so nothing slips. It is part of Overview Effect, where I lead design across the company.
+  </p>
+  <p>
+    This was my first project built entirely with an AI-native process. I used Figma only for early explorations (logo, color), and from there everything was made directly in code, working with Claude and the other AI tools I could get my hands on. That is why there are no mockups or design files behind it: the design happened in the build.
+  </p>
+  <p>
+    AI changed the execution, not the thinking. Working directly in code was a real acceleration, but the bottleneck was never speed, it was decisions, and those still take the time they take. The process stays, and the work is better for following it. Identity was the other hard part: these tools push you toward a default look, and getting past that took a lot of iteration, integration and documentation. I treated it as a design system from the start, not a set of screens.
+  </p>
+  <p>
+    It was conceived from the start as more than a design system: global by intent, closer to a brand system than a component library, one source the whole ecosystem draws from. Today it runs the academy and the website, with part of the platform in place; social, presentations, online courses and the rest of the company's media are concepted and next. Fully responsive, on current standards, and still growing.
+  </p>
+  <p>
+    I created a visual language for the brand, built in code. Four engines, named by the shape of their vocabulary (polygon, route, vector, network), render every signature graphic on the site, including the one in the hero. Each is a small module driven by config, and the math lives in one place that every surface draws from.
+  </p>
+  <p>
+    That choice came from the product itself. This is a sustainability platform, so the site had to be light too. A background video or a big hero image has real impact and communicates, but it weighs several megabytes; a graphic drawn in code weighs a few kilobytes and can hold the same presence on the page. Pushing for that was a deliberate choice, and it is where the whole exploration started.
+  </p>
+
+  <Fragment slot="images">
+    {/* VIDEO DE LOS ENGINES (pendiente): exportar del Graphics Studio y dejar en
+        /img/projects/gme/. Cuando esté, descomentar y ajustar el src.
+    <div class="project-img">
+      <video width="100%" autoplay muted loop playsinline poster="/img/projects/gme/engine-poster.png">
+        <source src="/img/projects/gme/engine-route.mp4" type="video/mp4" />
+      </video>
+    </div>
+    <p class="project-images-label">One of the four engines running: route, in signature mode.</p>
+    */}
+  </Fragment>
+</ProjectLayout>

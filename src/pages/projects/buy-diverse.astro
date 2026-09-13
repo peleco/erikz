@@ -1,0 +1,45 @@
+---
+import ProjectLayout from '../../layouts/ProjectLayout.astro';
+---
+
+<ProjectLayout
+  title="Buy Diverse"
+  year="2021"
+  agency="Stateside"
+  role={["Art Direction", "UI Design", "Interaction Design"]}
+>
+  <p>
+    Buy Diverse is a platform dedicated to supporting minority-owned businesses: helping them market their products and services, get sales training, and connect with larger companies.
+  </p>
+  <p>
+    I started on art direction, creating the logo and the initial style guides to set a coherent visual language. From there I moved into UI design production, building out the screens and the component library the platform runs on.
+  </p>
+
+  <Fragment slot="images">
+    <div class="project-img">
+      <img src="/img/projects/buy-diverse/bd-1.png" alt="Buy Diverse" />
+    </div>
+
+    <p class="project-images-label">
+      The visual language was built around diversity and culture. The logo stands for inclusivity and unity, the color palette pulls from a range of cultures, and custom textures add depth that reflects the different backgrounds in the community.
+    </p>
+
+    <div class="project-img">
+      <img src="/img/projects/buy-diverse/bd-2.png" alt="Buy Diverse" />
+    </div>
+    <div class="project-img">
+      <img src="/img/projects/buy-diverse/bd-3.png" alt="Buy Diverse" />
+    </div>
+
+    <p class="project-images-label">
+      In the UI production phase I built a component library as the base for the design system, set up the first style guide with clear design rules, and made the site fully responsive.
+    </p>
+
+    <div class="project-img">
+      <img src="/img/projects/buy-diverse/bd-4.png" alt="Buy Diverse" />
+    </div>
+    <div class="project-img">
+      <img src="/img/projects/buy-diverse/bd-5.png" alt="Buy Diverse" />
+    </div>
+  </Fragment>
+</ProjectLayout>

@@ -1,0 +1,82 @@
+---
+import Base from '../layouts/Base.astro';
+
+const projects = [
+  { href: '/projects/gme/', name: 'Green My Experience Website', type: 'Client Work' },
+  { href: '/projects/generative-grids/', name: 'Generative Grids', type: 'Personal Work' },
+  { href: '/projects/buy-diverse/', name: 'Buy Diverse', type: 'Client Work' },
+  { href: '/projects/surf-memoires/', name: 'Surf Mémoires', type: 'Personal Work' },
+  { href: '/projects/stateside/', name: 'Stateside Website', type: 'Client Work' },
+  { href: '/projects/vzla-sxxi/', name: 'VZLA SXXI', type: 'Personal Work' },
+  { href: '/projects/altarea/', name: 'Altarea Website', type: 'Client Work' },
+  { href: '/projects/orange/', name: 'Orange Business Lounge', type: 'Client Work' },
+  { href: '/projects/club-med/', name: 'Club Med Website', type: 'Client Work' },
+];
+---
+
+<Base title="Erik Zitzermann — Design Systems / Product Designer">
+  <div class="header-home">
+    <div class="layout-container">
+      <div class="col1 intro">
+        <h1>Erik Zitzermann</h1>
+        Interactive Designer / Art Director / Product Designer / Design Systems / AI-Native Design
+
+        <div class="intro-links">
+          <a href="https://twitter.com/erikzitzermann" target="_blank"><img src="/img/logo-twitter.svg" alt="Twitter" /></a>
+          <a href="https://www.instagram.com/peleco/" target="_blank"><img src="/img/logo-insta.svg" alt="Instagram" /></a>
+          <a href="https://www.linkedin.com/in/ezitzermann/" target="_blank"><img src="/img/logo-in.svg" alt="LinkedIN" /></a>
+        </div>
+      </div>
+
+      <div class="col2">
+        <canvas id="canvas" width="660" height="550"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <div class="intro-home">
+    <div class="layout-container">
+      <p>I design digital products and experiences, from interfaces to brand systems. My recent focus has been design systems built for an AI-native workflow: organizational knowledge that both people and AI agents build from.</p>
+    </div>
+  </div>
+
+  <div class="projects-home">
+    <div class="layout-container">
+      <h3>Selected work</h3>
+
+      <div class="projects-list">
+        <span class="projects-highlight" aria-hidden="true"></span>
+        {projects.map((p) => (
+          <a class="projects-home-item" href={p.href}>
+            <p class="projects-home-item-name">{p.name}</p>
+            <p class="projects-home-item-type">{p.type}</p>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <div class="information-home">
+    <div class="layout-container">
+      <div class="information-home-companies">
+        <h3>Companies where I worked</h3>
+        <p>Schematic, Possible, Altima° / Accenture Interactive, Stateside, currently at Overview Effect.</p>
+      </div>
+
+      <div class="information-home-clients">
+        <h3>Clients that I worked for</h3>
+        <p>Disney, Dell, WWE, Powerade, Target, Danon, General Motors, Mazda, Microsoft, NFL, CNN, Petit Bateau, Bank of America, ING, Club Med, Orange.</p>
+      </div>
+
+      <div class="information-home-tools">
+        <h3>Tools I use most of the time</h3>
+        <p>Figma, Claude Code and Codex.</p>
+      </div>
+
+      <div class="information-home-languages">
+        <h3>Coding and programming</h3>
+        <p>HTML, CSS, JavaScript.</p>
+      </div>
+    </div>
+  </div>
+</Base>
