@@ -409,12 +409,6 @@ window.addEventListener("load", initBoxMorph);
     try { sessionStorage.setItem("__vt", e.viewTransition ? "SI" : "NO"); } catch (_) {}
   });
   function show() {
-    var on = false;
-    try {
-      if (location.search.indexOf("vtdebug") !== -1) sessionStorage.setItem("__vtdebug", "1");
-      on = sessionStorage.getItem("__vtdebug") === "1";
-    } catch (_) {}
-    if (!on) return;
     var last = "(primera carga)";
     try { last = sessionStorage.getItem("__vt") || last; } catch (_) {}
     var b = document.createElement("div");
