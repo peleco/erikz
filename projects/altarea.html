@@ -41,23 +41,36 @@
       <link rel="stylesheet" href="../css/main.css">
       <link rel="stylesheet" href="../fonts/stylesheet.css">
 
+      <script src="/js/modules.js"></script>
+
     </head>
     <body>
 
-      <div class="header-project">
-        <div class="layout-container">
+      <div class="project-topbar">
+        <div class="topbar-inner" style="view-transition-name: proj-box">
 
-          <a href="/index.html">Back</a>
+          <a class="topbar-back" href="/index.html" aria-label="Back to home" style="view-transition-name: topbar-back">
+            <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="19" y1="12" x2="5" y2="12"></line>
+              <polyline points="12 19 5 12 12 5"></polyline>
+            </svg>
+          </a>
+
+          <span class="topbar-divider" aria-hidden="true" style="view-transition-name: topbar-divider"></span>
+
+          <span class="topbar-title" style="view-transition-name: vt-gme">Altarea Website</span>
+
+          <span class="topbar-graphic" aria-hidden="true">
+            <canvas class="topbar-canvas" data-grid data-size="79" data-cols="3" data-rows="1" width="237" height="79"></canvas>
+          </span>
 
         </div>
       </div>
 
-      <div class="project">
+      <div class="project" style="view-transition-name: page-content">
         <div class="layout-container">
 
           <div class="project-info">
-
-            <h2>Altarea Website</h2>
 
             <div class="project-text">
               <p>

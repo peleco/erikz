@@ -323,7 +323,7 @@ h3 {
   align-items: center;
   padding: 0;
   border-top: #000 solid 1px;
-  transition: border-color .4s cubic-bezier(0.340, 0.010, 0.010, 0.995);
+  transition: border-color 1s cubic-bezier(0.340, 0.010, 0.010, 0.995); /* estela al salir */
 }
 .projects-home-item:last-child {
   border-bottom: #000 solid 1px;
@@ -340,7 +340,7 @@ h3 {
   background-color: #FFDE00;
   opacity: 0;
   z-index: 0;
-  transition: opacity .4s cubic-bezier(0.340, 0.010, 0.010, 0.995);
+  transition: opacity 1s cubic-bezier(0.340, 0.010, 0.010, 0.995); /* estela al salir */
 }
 .projects-home-item-name,
 .projects-home-item-type {
@@ -350,14 +350,17 @@ h3 {
 .projects-home-item:hover .projects-home-item-bg,
 .projects-home-item:active .projects-home-item-bg {
   opacity: 1;
+  transition-duration: .25s; /* entra rápido, sale lento (estela) */
 }
 /* ocultar las líneas que tocan el cuadro amarillo */
 .projects-home-item:hover,
 .projects-home-item:hover + .projects-home-item {
   border-top-color: transparent;
+  transition-duration: .25s;
 }
 .projects-home-item:last-child:hover {
   border-bottom-color: transparent;
+  transition-duration: .25s;
 }
 
 .projects-home-item-name {
@@ -563,6 +566,21 @@ h3 {
 @media only screen and (max-width: 37.5rem) {
   .project-topbar {
     padding: 1.875rem calc(var(--grid-margin-mobile) - 1.25rem) 0;
+  }
+  /* en mobile la altura la da el título (igual que el item de la lista): una línea =
+     barra más baja, dos líneas = más alta. Se oculta el canvas (competía con el título).
+     Selector con más peso porque la regla base de .topbar-inner viene después en el archivo. */
+  .project-topbar .topbar-inner {
+    height: auto;
+    padding-top: 0;
+    padding-bottom: 0;
+  }
+  .project-topbar .topbar-title {
+    margin: 1em 0; /* mismo ritmo vertical y line-height que el <p> del nombre en la lista */
+    line-height: normal;
+  }
+  .project-topbar .topbar-graphic {
+    display: none;
   }
 }
 .topbar-inner {

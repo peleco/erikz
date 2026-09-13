@@ -257,25 +257,45 @@ window.addEventListener("load", drawGrids);
 // Al entrar a un proyecto, marcamos el item de la lista con el mismo
 // view-transition-name que la barra del detalle, para que ese cuadro amarillo
 // "suba" y se convierta en la barra (mismo ancho). Solo GME por ahora.
+// Proyectos con la barra/transición nueva. Agregar aquí el archivo cuando se hace el
+// rollout a otra página de proyecto.
+var TRANSITION_PROJECTS = [
+  "gme.html", "buy-diverse.html", "altarea.html", "club-med.html", "orange.html",
+  "stateside.html", "generative-grids.html", "surf-memoires.html", "VZLA-SXXI.html"
+];
+
+function isTransitionProject(href) {
+  return TRANSITION_PROJECTS.some(function (f) { return (href || "").indexOf(f) !== -1; });
+}
+
 function initBoxMorph() {
-  var link = document.querySelector('a.projects-home-item[href*="gme.html"]');
-  if (!link) return;
-  var bg = link.querySelector(".projects-home-item-bg");
-  var name = link.querySelector(".projects-home-item-name");
+  var links = document.querySelectorAll("a.projects-home-item");
+  if (!links.length) return;
 
   // Los nombres de transición NO viven fijos en el DOM (eso creaba un contexto de
   // composición que provocaba un salto al hacer scroll). Se ponen solo al hacer click,
   // para el morph de ida, y se limpian al cargar o al volver (incluye bfcache).
   function clearNames() {
-    if (bg) bg.style.viewTransitionName = "";
-    if (name) name.style.viewTransitionName = "";
+    for (var i = 0; i < links.length; i++) {
+      var bg = links[i].querySelector(".projects-home-item-bg");
+      var name = links[i].querySelector(".projects-home-item-name");
+      if (bg) bg.style.viewTransitionName = "";
+      if (name) name.style.viewTransitionName = "";
+    }
   }
   clearNames();
 
-  link.addEventListener("click", function () {
-    if (bg) bg.style.viewTransitionName = "proj-box";
-    if (name) name.style.viewTransitionName = "vt-gme";
-  });
+  for (var i = 0; i < links.length; i++) {
+    (function (link) {
+      if (!isTransitionProject(link.getAttribute("href"))) return;
+      link.addEventListener("click", function () {
+        var bg = link.querySelector(".projects-home-item-bg");
+        var name = link.querySelector(".projects-home-item-name");
+        if (bg) bg.style.viewTransitionName = "proj-box";
+        if (name) name.style.viewTransitionName = "vt-gme";
+      });
+    })(links[i]);
+  }
   window.addEventListener("pageshow", clearNames);
 }
 window.addEventListener("load", initBoxMorph);
@@ -342,8 +362,9 @@ window.addEventListener("load", initBoxMorph);
     if (!onHome() || !cameFromProject()) return;
     var ref;
     try { ref = new URL(document.referrer).pathname; } catch (e) { return; }
-    if (ref.indexOf("gme.html") === -1) return;
-    var link = document.querySelector('a.projects-home-item[href*="gme.html"]');
+    var file = TRANSITION_PROJECTS.filter(function (f) { return ref.indexOf(f) !== -1; })[0];
+    if (!file) return;
+    var link = document.querySelector('a.projects-home-item[href*="' + file + '"]');
     if (!link) return;
     var bg = link.querySelector(".projects-home-item-bg");
     if (bg) bg.style.viewTransitionName = "proj-box";
