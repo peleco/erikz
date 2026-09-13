@@ -400,3 +400,28 @@ window.addEventListener("load", initBoxMorph);
   });
 })();
 
+
+// ---- DEBUG TEMPORAL (solo con ?vtdebug) ---------------------------------
+// Muestra en pantalla si el navegador inició la transición al salir de la página
+// anterior. Se activa visitando cualquier página con ?vtdebug y persiste en la sesión.
+(function () {
+  window.addEventListener("pageswap", function (e) {
+    try { sessionStorage.setItem("__vt", e.viewTransition ? "SI" : "NO"); } catch (_) {}
+  });
+  function show() {
+    var on = false;
+    try {
+      if (location.search.indexOf("vtdebug") !== -1) sessionStorage.setItem("__vtdebug", "1");
+      on = sessionStorage.getItem("__vtdebug") === "1";
+    } catch (_) {}
+    if (!on) return;
+    var last = "(primera carga)";
+    try { last = sessionStorage.getItem("__vt") || last; } catch (_) {}
+    var b = document.createElement("div");
+    b.textContent = "VT al navegar aquí: " + last;
+    b.style.cssText = "position:fixed;left:8px;bottom:8px;z-index:99999;background:#000;color:#fff;font:13px/1.2 monospace;padding:8px 12px;border-radius:6px;";
+    document.body.appendChild(b);
+  }
+  if (document.readyState !== "loading") show();
+  else document.addEventListener("DOMContentLoaded", show);
+})();
