@@ -365,6 +365,7 @@ h3 {
 
 .projects-home-item-name {
   font-size: 1.5rem;
+  line-height: 1.25; /* igual que .topbar-title, para que el morph no escale */
 }
 .projects-home-item-type {
   font-size: 1.125rem;
@@ -576,8 +577,7 @@ h3 {
     padding-bottom: 0;
   }
   .project-topbar .topbar-title {
-    margin: 1em 0; /* mismo ritmo vertical y line-height que el <p> del nombre en la lista */
-    line-height: normal;
+    margin: 1em 0; /* mismo ritmo vertical que el <p> del nombre en la lista (line-height 1.25 heredado) */
   }
   .project-topbar .topbar-graphic {
     display: none;
@@ -635,7 +635,7 @@ h3 {
   position: relative;
   z-index: 2;
   font-size: 1.5rem;
-  line-height: normal; /* igual que el nombre en la lista, para que el morph no escale */
+  line-height: 1.25; /* igual que el nombre en la lista, para que el morph no escale */
   color: #000;
 }
 .topbar-graphic {
