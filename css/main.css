@@ -313,71 +313,52 @@ h3 {
   }
 }
 .projects-home-item {
-  transition: background-color .30s cubic-bezier(0.340, 0.010, 0.010, 0.995),
-              border-top 1.25s cubic-bezier(0.340, 0.010, 0.010, 0.995),
-              padding .30s cubic-bezier(0.340, 0.010, 0.010, 0.995);
-  /* background-color: #FFF; */
   color: #000;
   text-decoration: none;
   grid-column: span 12;
   text-align: left;
   display: flex;
-  /* display: block; */
   position: relative;
   justify-content: space-between;
   align-items: center;
   padding: 0;
-  /* grid-template-columns: repeat(12, 1fr);
-  grid-column-gap: var(--grid-gutter);
-  align-items: start; */
-  /* margin-bottom: 6.25rem; */
   border-top: #000 solid 1px;
-  /* border-bottom: #000 solid 1px; */
-  /* z-index: 20; */
+  transition: border-color .4s cubic-bezier(0.340, 0.010, 0.010, 0.995);
+}
+.projects-home-item:last-child {
+  border-bottom: #000 solid 1px;
 }
 
-
-.projects-home-item::before {
-  transition: all 1.25s cubic-bezier(0.340, 0.010, 0.010, 0.995);
-              /* transform .30s cubic-bezier(0.340, 0.010, 0.010, 0.995); */
-  content: "";
-  display: block;
+/* Cuadro amarillo del hover: elemento real (así puede hacer el morph), sangrado 1.25rem
+   a cada lado del grid y detrás del texto. El grid y las líneas quedan intactos. */
+.projects-home-item-bg {
   position: absolute;
-  background: #FFDE00;
-  /* mix-blend-mode: multiply; */
-  opacity: 0;
   top: -1px;
   left: -1.25rem;
   width: calc(100% + 2.5rem);
   height: calc(100% + 2px);
-  z-index: -10;
+  background-color: #FFDE00;
+  opacity: 0;
+  z-index: 0;
+  transition: opacity .4s cubic-bezier(0.340, 0.010, 0.010, 0.995);
 }
-.projects-home-item:hover::before, .projects-home-item:active::before {
+.projects-home-item-name,
+.projects-home-item-type {
+  position: relative;
+  z-index: 1;
+}
+.projects-home-item:hover .projects-home-item-bg,
+.projects-home-item:active .projects-home-item-bg {
   opacity: 1;
-  transition-duration: .6s;
-  /* transform: scaleX(1); */
 }
-
-.projects-home-item:hover {
-  /* background-color: #FFDE00; */
-  border-top: #FFDE00 solid 1px;
-  transition-duration: .3s;
-  /* padding: 0 1.25rem; */
-}
+/* ocultar las líneas que tocan el cuadro amarillo */
+.projects-home-item:hover,
 .projects-home-item:hover + .projects-home-item {
-  border-top: #FFDE00 solid 1px;
-  transition-duration: .3s;
+  border-top-color: transparent;
 }
-.projects-home-item:last-child {
-  /* transition: all .60s cubic-bezier(0.340, 0.010, 0.010, 0.995); */
-  transition: all 1.25s cubic-bezier(0.340, 0.010, 0.010, 0.995);
-  border-bottom: #000 solid 1px;
-} 
 .projects-home-item:last-child:hover {
-  border-bottom: #FFDE00 solid 1px;
-  transition-duration: 0.3s;
-} 
-
+  border-bottom-color: transparent;
+}
 
 .projects-home-item-name {
   font-size: 1.5rem;
@@ -569,6 +550,156 @@ h3 {
     font-weight: bold;
     grid-column: span 12;
     margin-bottom: 1.25rem;
+}
+
+/* Project top bar (prototype) --------------------------------------- */
+.project-topbar {
+  max-width: 90rem;
+  margin: 0 auto;
+  /* aire arriba = canvas del hero; lados = grid margin menos 1.25rem para que la barra
+     se sangre 1.25rem a cada lado, igual que el cuadro amarillo del hover */
+  padding: 3.125rem calc(var(--grid-margin) - 1.25rem) 0;
+}
+@media only screen and (max-width: 37.5rem) {
+  .project-topbar {
+    padding: 1.875rem calc(var(--grid-margin-mobile) - 1.25rem) 0;
+  }
+}
+.topbar-inner {
+  position: relative;
+  overflow: hidden;
+  background-color: #FFDE00;
+  height: 4.9375rem; /* 79px, misma altura que el item de la lista */
+  display: flex;
+  align-items: center;
+  gap: 1.25rem;
+  padding: 0 1.25rem;
+}
+.topbar-back {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  color: #000;
+  text-decoration: none;
+}
+/* Cuadro del hover + área de click, del tamaño de los botones sociales (40x40),
+   centrado en la flecha y sin afectar el espaciado (overlay absoluto) */
+.topbar-back::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  transform: translate(-50%, -50%);
+  background-color: #FFDE00;
+  transition: all .60s cubic-bezier(0.340, 0.010, 0.010, 0.995);
+  z-index: -1;
+}
+.topbar-back:hover::before {
+  background-color: #fff;
+}
+.topbar-back:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 3px;
+}
+.topbar-divider {
+  position: relative;
+  z-index: 2;
+  flex: 0 0 auto;
+  width: 1px;
+  height: 2rem;
+  background-color: #000;
+}
+.topbar-title {
+  position: relative;
+  z-index: 2;
+  font-size: 1.5rem;
+  line-height: 1.15;
+  color: #000;
+}
+.topbar-graphic {
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 1;
+  height: 100%;
+  width: 14.8125rem; /* 237px = 3 módulos de 79px */
+  overflow: hidden;
+  animation: vt-fade-in 3s 1s both; /* fade lento, en la página viva */
+}
+@media (prefers-reduced-motion: reduce) {
+  .topbar-graphic { animation: none; opacity: 1; }
+}
+.topbar-canvas {
+  position: absolute;
+  right: 0;
+  top: 0;
+}
+
+/* Transiciones entre páginas (View Transitions API, cross-document) --- */
+@view-transition {
+  navigation: auto;
+}
+
+@keyframes vt-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes vt-fade-out { from { opacity: 1; } to { opacity: 0; } }
+
+/* Coreografía en etapas al abrir un proyecto (~1s):
+   1) la barra amarilla sube a su posición; el label "Client Work" se desvanece.
+   2) al llegar, aparecen la flecha de back y el divisor, y el título viaja a su lugar.
+   3) el gráfico entra con un fade sutil. */
+
+/* 1 · la barra (cuadro amarillo) y el título suben juntos */
+::view-transition-group(proj-box),
+::view-transition-group(vt-gme) {
+  animation-duration: .9s;
+  animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1); /* easeOutQuint: llega suave */
+}
+/* 1 · el label Client Work viaja dentro del cuadro y se desvanece durante el movimiento */
+::view-transition-old(proj-box),
+::view-transition-new(proj-box) {
+  animation-duration: .5s;
+}
+
+/* 2 · al llegar la barra: back, divisor y el contenido de la página entran con el
+   mismo fade, justo cuando la barra llega a su posición */
+::view-transition-new(topbar-back),
+::view-transition-new(topbar-divider),
+::view-transition-new(page-content) { animation: vt-fade-in .45s .7s both; }
+
+/* El gráfico NO va en la transición: se desvanece lento (3s) ya en la página viva,
+   así la transición es corta y el back responde enseguida. Ver .topbar-graphic. */
+
+/* Vuelta al home (to-home): inverso exacto de la ida.
+   1) desaparecen los elementos del header (back, divisor, canvas) y el contenido;
+   2) el cuadro amarillo + el título bajan juntos a la lista (el título a su lugar);
+   3) al llegar, el amarillo se disuelve y el home aparece. */
+:active-view-transition-type(to-home)::view-transition-old(topbar-back),
+:active-view-transition-type(to-home)::view-transition-old(topbar-divider),
+:active-view-transition-type(to-home)::view-transition-old(topbar-graphic),
+:active-view-transition-type(to-home)::view-transition-old(page-content) {
+  animation: vt-fade-out .25s both;
+}
+:active-view-transition-type(to-home)::view-transition-group(proj-box),
+:active-view-transition-type(to-home)::view-transition-group(vt-gme) {
+  animation-delay: .2s; /* bajan después de que desaparecen los elementos */
+}
+:active-view-transition-type(to-home)::view-transition-old(proj-box) {
+  animation: vt-fade-out .3s .85s both; /* el amarillo se mantiene y se disuelve al llegar */
+}
+:active-view-transition-type(to-home)::view-transition-new(root) {
+  animation: vt-fade-in .35s .85s both; /* el home aparece al llegar */
+}
+
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-group(*),
+  ::view-transition-old(*),
+  ::view-transition-new(*) {
+    animation: none !important;
+  }
 }
 .project-info {
   margin: 6.25rem 0 1.875rem 0;
