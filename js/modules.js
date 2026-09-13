@@ -269,22 +269,23 @@ function isProjectHref(href) {
   return /(^|\/)projects\//.test(href || "");
 }
 
+// Los nombres de transición NO viven fijos en el DOM (eso crea un contexto de
+// composición que provoca un salto de subpíxel). Se ponen solo durante la navegación
+// y se limpian CUANDO la transición termina (viewTransition.finished), no en `load`,
+// para no quitarlos a destiempo mientras la animación sigue corriendo.
+function clearHomeVTNames() {
+  var links = document.querySelectorAll("a.projects-home-item");
+  for (var i = 0; i < links.length; i++) {
+    var bg = links[i].querySelector(".projects-home-item-bg");
+    var name = links[i].querySelector(".projects-home-item-name");
+    if (bg) bg.style.viewTransitionName = "";
+    if (name) name.style.viewTransitionName = "";
+  }
+}
+
 function initBoxMorph() {
   var links = document.querySelectorAll("a.projects-home-item");
   if (!links.length) return;
-
-  // Los nombres de transición NO viven fijos en el DOM (eso creaba un contexto de
-  // composición que provocaba un salto al hacer scroll). Se ponen solo al hacer click,
-  // para el morph de ida, y se limpian al cargar o al volver (incluye bfcache).
-  function clearNames() {
-    for (var i = 0; i < links.length; i++) {
-      var bg = links[i].querySelector(".projects-home-item-bg");
-      var name = links[i].querySelector(".projects-home-item-name");
-      if (bg) bg.style.viewTransitionName = "";
-      if (name) name.style.viewTransitionName = "";
-    }
-  }
-  clearNames();
 
   for (var i = 0; i < links.length; i++) {
     (function (link) {
@@ -297,7 +298,11 @@ function initBoxMorph() {
       });
     })(links[i]);
   }
-  window.addEventListener("pageshow", clearNames);
+
+  // Al restaurar desde bfcache no hay transición: limpiamos por si quedaron nombres.
+  window.addEventListener("pageshow", function (e) {
+    if (e.persisted) clearHomeVTNames();
+  });
 }
 window.addEventListener("load", initBoxMorph);
 
@@ -328,12 +333,14 @@ window.addEventListener("load", initBoxMorph);
     }
   });
 
-  // Página que llega: fija el tipo también (es otro documento).
+  // Página que llega: fija el tipo también (es otro documento) y, al terminar la
+  // transición, limpia los nombres para que el swap a texto vivo no salte.
   window.addEventListener("pagereveal", function (e) {
     if (!e.viewTransition) return;
     var from = document.referrer ? pathOf(document.referrer) : "";
     var t = navType(from, location.pathname);
     if (t) e.viewTransition.types.add(t);
+    e.viewTransition.finished.finally(clearHomeVTNames);
   });
 })();
 
