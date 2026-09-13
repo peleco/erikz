@@ -256,16 +256,17 @@ window.addEventListener("load", drawGrids);
 
 // Al entrar a un proyecto, marcamos el item de la lista con el mismo
 // view-transition-name que la barra del detalle, para que ese cuadro amarillo
-// "suba" y se convierta en la barra (mismo ancho). Solo GME por ahora.
-// Proyectos con la barra/transición nueva. Agregar aquí el archivo cuando se hace el
-// rollout a otra página de proyecto.
-var TRANSITION_PROJECTS = [
-  "gme.html", "buy-diverse.html", "altarea.html", "club-med.html", "orange.html",
-  "stateside.html", "generative-grids.html", "surf-memoires.html", "VZLA-SXXI.html"
-];
-
-function isTransitionProject(href) {
-  return TRANSITION_PROJECTS.some(function (f) { return (href || "").indexOf(f) !== -1; });
+// "suba" y se convierta en la barra. Todos los proyectos tienen la barra.
+//
+// Identificamos un proyecto por su "slug" (último segmento de la ruta, sin .html y en
+// minúsculas). Esto es clave: en producción Netlify sirve los enlaces sin .html
+// (/projects/gme), así que NO se puede depender de "gme.html" en el href.
+function projectSlug(pathOrHref) {
+  var seg = (pathOrHref || "").split("?")[0].split("#")[0].split("/").pop() || "";
+  return seg.replace(/\.html$/i, "").toLowerCase();
+}
+function isProjectHref(href) {
+  return /(^|\/)projects\//.test(href || "");
 }
 
 function initBoxMorph() {
@@ -287,7 +288,7 @@ function initBoxMorph() {
 
   for (var i = 0; i < links.length; i++) {
     (function (link) {
-      if (!isTransitionProject(link.getAttribute("href"))) return;
+      if (!isProjectHref(link.getAttribute("href"))) return;
       link.addEventListener("click", function () {
         var bg = link.querySelector(".projects-home-item-bg");
         var name = link.querySelector(".projects-home-item-name");
@@ -305,7 +306,7 @@ window.addEventListener("load", initBoxMorph);
 (function () {
   function pathOf(url) { try { return new URL(url, location.href).pathname; } catch (e) { return ""; } }
   function isProject(p) { return p.indexOf("/projects/") === 0; }
-  function isHome(p) { return p === "/" || p === "/index.html"; }
+  function isHome(p) { return p === "/" || p === "" || /\/index(\.html)?$/.test(p); }
   function navType(from, to) {
     if (isHome(from) && isProject(to)) return "to-project";
     if (isProject(from) && isHome(to)) return "to-home";
@@ -362,9 +363,13 @@ window.addEventListener("load", initBoxMorph);
     if (!onHome() || !cameFromProject()) return;
     var ref;
     try { ref = new URL(document.referrer).pathname; } catch (e) { return; }
-    var file = TRANSITION_PROJECTS.filter(function (f) { return ref.indexOf(f) !== -1; })[0];
-    if (!file) return;
-    var link = document.querySelector('a.projects-home-item[href*="' + file + '"]');
+    var slug = projectSlug(ref);
+    if (!slug) return;
+    var links = document.querySelectorAll("a.projects-home-item");
+    var link = null;
+    for (var i = 0; i < links.length; i++) {
+      if (projectSlug(links[i].getAttribute("href")) === slug) { link = links[i]; break; }
+    }
     if (!link) return;
     var bg = link.querySelector(".projects-home-item-bg");
     if (bg) bg.style.viewTransitionName = "proj-box";
