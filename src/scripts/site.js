@@ -113,6 +113,11 @@ document.addEventListener('click', function (e) {
   }
 }, true);
 
+function clearHighlightName() {
+  var box = document.querySelector('.projects-highlight');
+  if (box) box.style.viewTransitionName = '';
+}
+
 // Vuelta (proyecto -> home): el DOM del home ya está vivo; colocamos el cuadro sobre el
 // item de origen y le damos el nombre, para que la barra baje a su sitio (morph inverso).
 document.addEventListener('astro:after-swap', function () {
@@ -125,11 +130,17 @@ document.addEventListener('astro:after-swap', function () {
   }
 });
 
-// En cada página (inicial y tras cada navegación): arrancar canvas, montar el cuadro y
-// limpiar el nombre de transición para que el hover vuelva a funcionar normal.
+// El nombre de transición se limpia CUANDO la transición termina (no en page-load, que
+// corre demasiado pronto y borraba el morph inverso antes de que se capturara el estado
+// nuevo). Así el hover vuelve a funcionar normal después de cada navegación.
+document.addEventListener('astro:before-swap', function (e) {
+  if (e.viewTransition && e.viewTransition.finished) {
+    e.viewTransition.finished.finally(clearHighlightName);
+  }
+});
+
+// En cada página (inicial y tras cada navegación): arrancar canvas y montar el cuadro.
 document.addEventListener('astro:page-load', function () {
   drawGrids();
   initHighlight();
-  var box = document.querySelector('.projects-highlight');
-  if (box) box.style.viewTransitionName = '';
 });
