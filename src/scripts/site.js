@@ -64,6 +64,10 @@ function initHighlight() {
   // home reaparece bajo un cursor quieto el navegador dispara un mouseenter sintético que
   // movía la barra sola. Con pointermove, un mouse quieto no hace nada hasta que se mueve.
   list.addEventListener('pointermove', function (e) {
+    // Durante una transición (saliendo al proyecto o volviendo) la barra está comprometida
+    // con un item; ignoramos el hover para que no se mueva a otros proyectos.
+    var cl = document.documentElement.classList;
+    if (cl.contains('is-leaving-home') || cl.contains('is-returning')) return;
     var item = e.target.closest ? e.target.closest('.projects-home-item') : null;
     if (item) activate(item);
   });
