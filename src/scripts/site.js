@@ -41,26 +41,38 @@ function initHighlight() {
   var items = list.querySelectorAll('.projects-home-item');
   if (!box || !items.length) return;
 
+  var current = null;
   function markTarget(item) {
     for (var i = 0; i < items.length; i++) items[i].classList.remove('box-target');
     if (item) item.classList.add('box-target'); // solo mientras el cuadro está sobre el item
   }
   function activate(item) {
+    if (item === current) return;
+    current = item;
     var wasOn = box.classList.contains('on');
     moveHighlight(box, item, wasOn); // si ya estaba visible, se desliza; si no, salta
     box.classList.add('on');
     markTarget(item);
   }
   function deactivate() {
+    current = null;
     box.classList.remove('on'); // se desvanece en su sitio (estela lenta)
     markTarget(null); // las líneas vuelven cuando el cuadro se va
   }
 
-  for (var i = 0; i < items.length; i++) {
-    items[i].addEventListener('mouseenter', function () { activate(this); });
-    items[i].addEventListener('focusin', function () { activate(this); });
-  }
-  list.addEventListener('mouseleave', deactivate);
+  // Activamos con el MOVIMIENTO real del puntero (pointermove), no con mouseenter: cuando el
+  // home reaparece bajo un cursor quieto el navegador dispara un mouseenter sintético que
+  // movía la barra sola. Con pointermove, un mouse quieto no hace nada hasta que se mueve.
+  list.addEventListener('pointermove', function (e) {
+    var item = e.target.closest ? e.target.closest('.projects-home-item') : null;
+    if (item) activate(item);
+  });
+  list.addEventListener('pointerleave', deactivate);
+  // Teclado: el foco sí activa de inmediato (es intencional).
+  list.addEventListener('focusin', function (e) {
+    var item = e.target.closest ? e.target.closest('.projects-home-item') : null;
+    if (item) activate(item);
+  });
   list.addEventListener('focusout', function (e) {
     if (!list.contains(e.relatedTarget)) deactivate();
   });
