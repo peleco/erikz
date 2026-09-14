@@ -165,7 +165,9 @@ document.addEventListener('astro:after-swap', function () {
     // Vuelta (proyecto -> home): colocamos el cuadro y el título sobre el item de origen
     // para que la barra baje a su sitio (morph inverso). is-returning retrasa la aparición
     // del home hasta que el cuadro llega (ver CSS).
-    setMorph(highlightForSlug(slugOf(lastNav.from)), false);
+    var hit = highlightForSlug(slugOf(lastNav.from));
+    setMorph(hit, false);
+    if (hit && hit.item) hit.item.classList.add('is-here'); // líneas ocultas hasta el final
     document.documentElement.classList.add('is-returning');
   }
 });
@@ -186,6 +188,8 @@ function onTransitionEnd() {
       if (reverse) {
         var box = document.querySelector('.projects-highlight');
         if (box) box.classList.remove('on'); // el cuadro se desvanece al llegar a la lista
+        var here = document.querySelector('.projects-home-item.is-here');
+        if (here) here.classList.remove('is-here'); // las líneas aparecen con su fade (1s)
       }
       clearMorphNames();
     });

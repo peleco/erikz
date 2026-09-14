@@ -373,6 +373,16 @@ h3 {
   border-bottom-color: transparent;
   transition-duration: .25s;
 }
+/* En la vuelta, el item de destino llega con sus líneas ocultas (el cuadro las tapaba en
+   la transición). Al quitar is-here, border-color anima de transparent a negro (1s), así
+   las líneas aparecen al mismo ritmo que el cuadro se desvanece, sin salto. */
+.projects-home-item.is-here,
+.projects-home-item.is-here + .projects-home-item {
+  border-top-color: transparent;
+}
+.projects-home-item.is-here:last-child {
+  border-bottom-color: transparent;
+}
 .projects-home-item-name,
 .projects-home-item-type {
   position: relative;
@@ -680,7 +690,7 @@ h3 {
 /* Vuelta al home (is-returning): el home (root nuevo) aparece cuando el cuadro ya llegó a
    la lista, no durante la bajada. El cuadro y el título son grupos aparte, no se afectan. */
 html.is-returning::view-transition-old(root) { animation: vt-fade-out .2s ease both; }
-html.is-returning::view-transition-new(root) { animation: vt-fade-in .35s ease .5s both; }
+html.is-returning::view-transition-new(root) { animation: vt-fade-in .35s ease .3s both; }
 
 ::view-transition-group(proj-box),
 ::view-transition-group(proj-title) {
