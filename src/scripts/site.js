@@ -129,19 +129,41 @@ function clearMorphNames() {
   for (var i = 0; i < names.length; i++) names[i].style.viewTransitionName = '';
 }
 
-// Vuelta (proyecto -> home): el DOM del home ya está vivo; colocamos el cuadro y el título
-// sobre el item de origen para que la barra baje a su sitio (morph inverso).
+// Llegada al proyecto (forward): dejamos el header en su estado "entrando" (título a la
+// izquierda, back/divisor/canvas/contenido ocultos). Eso es lo que captura la View
+// Transition; al terminar se quita la clase y todo anima a su lugar (ver CSS is-entering).
+// Medimos cuánto tiene que correrse el título a la derecha (distancia del back al título).
+function prepareProjectEntrance() {
+  var title = document.querySelector('.topbar-title');
+  var back = document.querySelector('.topbar-back');
+  if (title && back) {
+    var shift = title.offsetLeft - back.offsetLeft;
+    if (shift > 0) title.style.setProperty('--title-shift', shift + 'px');
+  }
+  document.documentElement.classList.add('is-entering');
+}
+
 document.addEventListener('astro:after-swap', function () {
-  if (!lastNav || !isProjectPath(lastNav.from) || !isHomePath(lastNav.to)) return;
-  setMorph(highlightForSlug(slugOf(lastNav.from)), false);
+  if (!lastNav) return;
+  if (isHomePath(lastNav.from) && isProjectPath(lastNav.to)) {
+    prepareProjectEntrance();
+  } else if (isProjectPath(lastNav.from) && isHomePath(lastNav.to)) {
+    // Vuelta (proyecto -> home): colocamos el cuadro y el título sobre el item de origen
+    // para que la barra baje a su sitio (morph inverso).
+    setMorph(highlightForSlug(slugOf(lastNav.from)), false);
+  }
 });
 
-// Los nombres de transición se limpian CUANDO la transición termina (no en page-load, que
-// corre demasiado pronto y borraba el morph inverso antes de que se capturara el estado
-// nuevo). Así el hover vuelve a funcionar normal después de cada navegación.
+// Al terminar la transición: limpiar nombres (para que el hover vuelva a lo normal) y
+// quitar el estado "entrando" (dispara las etapas 3 y 4). Se hace en `finished`, no en
+// page-load, que corre demasiado pronto y borraba el morph antes de capturar el estado.
+function onTransitionEnd() {
+  clearMorphNames();
+  document.documentElement.classList.remove('is-entering');
+}
 document.addEventListener('astro:before-swap', function (e) {
   if (e.viewTransition && e.viewTransition.finished) {
-    e.viewTransition.finished.finally(clearMorphNames);
+    e.viewTransition.finished.finally(onTransitionEnd);
   }
 });
 
