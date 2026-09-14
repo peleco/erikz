@@ -14,11 +14,14 @@ function slugOf(pathname) {
 function isHomePath(p) { return p === '/' || p === '' || /\/index(\.html)?$/.test(p); }
 function isProjectPath(p) { return /^\/projects\//.test(p); }
 
-// Coloca el cuadro amarillo sobre un item de la lista (mismo sangrado que la barra).
+// Coloca el cuadro amarillo sobre un item de la lista. Mismas dimensiones EXACTAS que la
+// barra del header (item = 79px = barra), así el morph es un desplazamiento puro, sin
+// cambio de tamaño: se mueve idéntico al título. Las líneas las tapa la clase box-target,
+// no el sobre-tamaño, así que no hace falta el +2 / -1 de antes.
 function placeHighlight(box, item) {
   box.style.width = (item.offsetWidth + INSET * 2) + 'px';
-  box.style.height = (item.offsetHeight + 2) + 'px';
-  box.style.transform = 'translate(' + (item.offsetLeft - INSET) + 'px,' + (item.offsetTop - 1) + 'px)';
+  box.style.height = item.offsetHeight + 'px';
+  box.style.transform = 'translate(' + (item.offsetLeft - INSET) + 'px,' + item.offsetTop + 'px)';
 }
 // Mueve el cuadro; si animate es false, salta sin transición (primer hover / reposición).
 function moveHighlight(box, item, animate) {
@@ -125,7 +128,10 @@ document.addEventListener('astro:before-preparation', function (e) {
   if (isHomePath(from) && isProjectPath(to)) {
     try { sessionStorage.setItem('fromHome', '1'); } catch (err) {}
     var hit = highlightForSlug(slugOf(to));
-    setMorph(hit, hit && hit.box ? hit.box.classList.contains('on') : false);
+    // Fijamos el cuadro en el item de forma INSTANTÁNEA (como en la bajada), no con la
+    // animación de hover: si venías moviéndote y clicaste rápido, el cuadro podía estar aún
+    // en camino y la transición lo capturaba corrido, haciéndolo llegar tarde vs el título.
+    setMorph(hit, false);
   }
 });
 
