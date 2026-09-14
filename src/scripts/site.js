@@ -2,6 +2,7 @@
 // atención en la lista del home, y el enganche con el router de Astro para el morph
 // cuadro <-> barra del proyecto.
 import { drawGrids } from './grid.js';
+import { navigate } from 'astro:transitions/client';
 
 var REM = 16; // 1rem = 16px (html font-size: 1em)
 var INSET = 1.25 * REM; // sangrado del cuadro a cada lado, igual que la barra del proyecto
@@ -134,6 +135,25 @@ document.addEventListener('click', function (e) {
     e.stopPropagation();
     startLeaving();
   }
+}, true);
+
+// Salida del home (forward): al hacer click en un proyecto, primero desaparece el resto de
+// la página (queda solo el cuadro + el nombre del item), y con el mismo delay que la vuelta
+// arranca la subida. Interceptamos en captura para adelantarnos al router y navegar nosotros.
+document.addEventListener('click', function (e) {
+  if (e.metaKey || e.ctrlKey || e.shiftKey || e.altKey || e.button) return; // dejar abrir en pestaña
+  var link = e.target.closest ? e.target.closest('a.projects-home-item') : null;
+  if (!link) return;
+  var href = link.getAttribute('href');
+  if (!href || href.indexOf('/projects/') !== 0) return;
+  e.preventDefault();
+  e.stopPropagation();
+  var list = document.querySelector('.projects-list');
+  var box = list && list.querySelector('.projects-highlight');
+  if (box) { moveHighlight(box, link, box.classList.contains('on')); box.classList.add('on'); }
+  link.classList.add('is-leaving-target');
+  document.documentElement.classList.add('is-leaving-home');
+  setTimeout(function () { navigate(href); }, 550);
 }, true);
 
 function clearMorphNames() {

@@ -752,6 +752,20 @@ html.is-leaving .topbar-title {
   transition: transform .45s cubic-bezier(0.16, 1, 0.3, 1) .12s;
 }
 
+/* Salida del home (forward): al hacer click en un proyecto, primero desaparece el resto de
+   la página (mismo delay que la salida del proyecto), quedando solo el cuadro + el nombre
+   del item elegido; luego arranca la subida a la barra. */
+html.is-leaving-home .header-home,
+html.is-leaving-home .intro-home,
+html.is-leaving-home .information-home,
+html.is-leaving-home .footer,
+html.is-leaving-home .projects-home h3,
+html.is-leaving-home .projects-home-item:not(.is-leaving-target),
+html.is-leaving-home .is-leaving-target .projects-home-item-type {
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-group(*),
   ::view-transition-old(*),
