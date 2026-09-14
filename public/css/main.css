@@ -363,13 +363,15 @@ h3 {
 .projects-home-item:last-child {
   border-bottom: #000 solid 1px;
 }
-/* ocultar las líneas que toca el cuadro amarillo (el hover sigue siendo CSS) */
-.projects-home-item:hover,
-.projects-home-item:hover + .projects-home-item {
+/* Ocultar las líneas que toca el cuadro amarillo. Va por clase (.box-target, la pone el JS
+   cuando el cuadro está de verdad sobre el item), no por :hover, para que las líneas no
+   desaparezcan si el cuadro no está presente (p. ej. al volver con el mouse quieto). */
+.projects-home-item.box-target,
+.projects-home-item.box-target + .projects-home-item {
   border-top-color: transparent;
   transition-duration: .25s;
 }
-.projects-home-item:last-child:hover {
+.projects-home-item.box-target:last-child {
   border-bottom-color: transparent;
   transition-duration: .25s;
 }
@@ -383,6 +385,10 @@ h3 {
 .projects-home-item.is-here:last-child {
   border-bottom-color: transparent;
 }
+/* En la vuelta el label (Client Work) del item de destino entra lento, después del resto. */
+.projects-home-item.is-here .projects-home-item-type {
+  opacity: 0;
+}
 .projects-home-item-name,
 .projects-home-item-type {
   position: relative;
@@ -394,6 +400,7 @@ h3 {
 }
 .projects-home-item-type {
   font-size: 1.125rem;
+  transition: opacity 1.4s ease .2s; /* al volver, el label aparece lento */
 }
 /* @media only screen and (max-width: 37.5rem) {
   .projects-home-item {
@@ -694,8 +701,8 @@ html.is-returning::view-transition-new(root) { animation: vt-fade-in .35s ease .
 
 ::view-transition-group(proj-box),
 ::view-transition-group(proj-title) {
-  animation-duration: .6s;
-  animation-timing-function: cubic-bezier(0.1, 1, 0.15, 1); /* mismo easing que el hover del cuadro */
+  animation-duration: .85s;
+  animation-timing-function: cubic-bezier(0.3, 0.85, 0.25, 1); /* ease-out suave, arranque menos brusco */
 }
 /* El título tiene el mismo texto en la lista y en la barra, así que viaja con el cuadro
    (se corre de lado); el resto del contenido del cuadro se disuelve mientras crece. */

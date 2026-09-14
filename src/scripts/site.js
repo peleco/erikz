@@ -41,13 +41,19 @@ function initHighlight() {
   var items = list.querySelectorAll('.projects-home-item');
   if (!box || !items.length) return;
 
+  function markTarget(item) {
+    for (var i = 0; i < items.length; i++) items[i].classList.remove('box-target');
+    if (item) item.classList.add('box-target'); // solo mientras el cuadro está sobre el item
+  }
   function activate(item) {
     var wasOn = box.classList.contains('on');
     moveHighlight(box, item, wasOn); // si ya estaba visible, se desliza; si no, salta
     box.classList.add('on');
+    markTarget(item);
   }
   function deactivate() {
     box.classList.remove('on'); // se desvanece en su sitio (estela lenta)
+    markTarget(null); // las líneas vuelven cuando el cuadro se va
   }
 
   for (var i = 0; i < items.length; i++) {
