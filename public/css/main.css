@@ -718,6 +718,22 @@ html.is-entering .project {
 .topbar-graphic { transition: opacity 3s ease .6s; }                              /* 4: canvas, delay + fade muy lento */
 .project { transition: opacity .5s ease .12s; }                                   /* 4 */
 
+/* Vuelta al home (reverse): inversa de la entrada. Se reproduce en la página del proyecto
+   ANTES de navegar (.is-leaving), para que la View Transition capture la barra ya vaciada
+   (contenido/back/canvas ocultos, título corrido a la izquierda). Luego el cuadro + título
+   bajan a la lista (misma transición que la subida) y al llegar el cuadro hace fade out. */
+html.is-leaving .project,
+html.is-leaving .topbar-back,
+html.is-leaving .topbar-divider,
+html.is-leaving .topbar-graphic {
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+html.is-leaving .topbar-title {
+  transform: translateX(calc(var(--title-shift, 0px) * -1));
+  transition: transform .45s cubic-bezier(0.16, 1, 0.3, 1) .12s;
+}
+
 @media (prefers-reduced-motion: reduce) {
   ::view-transition-group(*),
   ::view-transition-old(*),

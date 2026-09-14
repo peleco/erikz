@@ -110,6 +110,20 @@ document.addEventListener('astro:before-preparation', function (e) {
 // (Astro restaura el scroll y anima la vuelta, y el morph inverso aterriza sobre el item
 // visible). Si se llegó directo al proyecto, el link cae a "/" normal. Captura para
 // adelantarnos al router de Astro y que no navegue a "/" además.
+// Salida al home: reproducimos las fases inversas en la página del proyecto (contenido +
+// back + canvas se van, el título vuelve a la izquierda) y recién ahí navegamos, para que
+// la View Transition capture la barra ya vaciada. La bajada del cuadro la hace el router.
+function startLeaving() {
+  var title = document.querySelector('.topbar-title');
+  var back = document.querySelector('.topbar-back');
+  if (title && back) {
+    var shift = title.offsetLeft - back.offsetLeft;
+    if (shift > 0) title.style.setProperty('--title-shift', shift + 'px');
+  }
+  document.documentElement.classList.add('is-leaving');
+  setTimeout(function () { history.back(); }, 550); // deja correr contenido/back/canvas + título
+}
+
 document.addEventListener('click', function (e) {
   var back = e.target.closest ? e.target.closest('a.topbar-back') : null;
   if (!back) return;
@@ -118,7 +132,7 @@ document.addEventListener('click', function (e) {
   if (fromHome && window.history.length > 1) {
     e.preventDefault();
     e.stopPropagation();
-    history.back();
+    startLeaving();
   }
 }, true);
 
@@ -158,14 +172,19 @@ document.addEventListener('astro:after-swap', function () {
 // quitar el estado "entrando" (dispara las etapas 3 y 4). Se hace en `finished`, no en
 // page-load, que corre demasiado pronto y borraba el morph antes de capturar el estado.
 function onTransitionEnd() {
-  clearMorphNames();
-  // Los elementos vivos de la barra no se pintan durante la transición (los reemplaza el
-  // snapshot). Si quitamos is-entering en el mismo frame en que reaparecen, el navegador
-  // nunca ve el estado oculto y las transiciones (fade del canvas, etc.) no arrancan. Con
-  // dos requestAnimationFrame dejamos que se pinten una vez ocultos y luego revelamos.
+  var reverse = lastNav && isProjectPath(lastNav.from) && isHomePath(lastNav.to);
+  // Los elementos vivos no se pintan durante la transición (los reemplaza el snapshot). Si
+  // cambiamos su estado en el mismo frame en que reaparecen, el navegador no ve el estado
+  // de partida y las transiciones no arrancan. Con dos requestAnimationFrame dejamos que se
+  // pinten una vez y luego: revelamos el header (entrada) o desvanecemos el cuadro (vuelta).
   requestAnimationFrame(function () {
     requestAnimationFrame(function () {
       document.documentElement.classList.remove('is-entering');
+      if (reverse) {
+        var box = document.querySelector('.projects-highlight');
+        if (box) box.classList.remove('on'); // el cuadro se desvanece al llegar a la lista
+      }
+      clearMorphNames();
     });
   });
 }
