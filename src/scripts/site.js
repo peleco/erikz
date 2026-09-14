@@ -159,7 +159,15 @@ document.addEventListener('astro:after-swap', function () {
 // page-load, que corre demasiado pronto y borraba el morph antes de capturar el estado.
 function onTransitionEnd() {
   clearMorphNames();
-  document.documentElement.classList.remove('is-entering');
+  // Los elementos vivos de la barra no se pintan durante la transición (los reemplaza el
+  // snapshot). Si quitamos is-entering en el mismo frame en que reaparecen, el navegador
+  // nunca ve el estado oculto y las transiciones (fade del canvas, etc.) no arrancan. Con
+  // dos requestAnimationFrame dejamos que se pinten una vez ocultos y luego revelamos.
+  requestAnimationFrame(function () {
+    requestAnimationFrame(function () {
+      document.documentElement.classList.remove('is-entering');
+    });
+  });
 }
 document.addEventListener('astro:before-swap', function (e) {
   if (e.viewTransition && e.viewTransition.finished) {
