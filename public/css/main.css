@@ -674,6 +674,14 @@ h3 {
    cuadro (flecha, divisor, título, canvas) se disuelve mientras el cuadro crece. El resto
    de la página entra con el fade que el router aplica al root. Un solo grupo: sin dos
    piezas que sincronizar y sin saltos. */
+@keyframes vt-fade-in { from { opacity: 0; } to { opacity: 1; } }
+@keyframes vt-fade-out { from { opacity: 1; } to { opacity: 0; } }
+
+/* Vuelta al home (is-returning): el home (root nuevo) aparece cuando el cuadro ya llegó a
+   la lista, no durante la bajada. El cuadro y el título son grupos aparte, no se afectan. */
+html.is-returning::view-transition-old(root) { animation: vt-fade-out .2s ease both; }
+html.is-returning::view-transition-new(root) { animation: vt-fade-in .35s ease .5s both; }
+
 ::view-transition-group(proj-box),
 ::view-transition-group(proj-title) {
   animation-duration: .6s;

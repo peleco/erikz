@@ -163,8 +163,10 @@ document.addEventListener('astro:after-swap', function () {
     prepareProjectEntrance();
   } else if (isProjectPath(lastNav.from) && isHomePath(lastNav.to)) {
     // Vuelta (proyecto -> home): colocamos el cuadro y el título sobre el item de origen
-    // para que la barra baje a su sitio (morph inverso).
+    // para que la barra baje a su sitio (morph inverso). is-returning retrasa la aparición
+    // del home hasta que el cuadro llega (ver CSS).
     setMorph(highlightForSlug(slugOf(lastNav.from)), false);
+    document.documentElement.classList.add('is-returning');
   }
 });
 
@@ -180,6 +182,7 @@ function onTransitionEnd() {
   requestAnimationFrame(function () {
     requestAnimationFrame(function () {
       document.documentElement.classList.remove('is-entering');
+      document.documentElement.classList.remove('is-returning');
       if (reverse) {
         var box = document.querySelector('.projects-highlight');
         if (box) box.classList.remove('on'); // el cuadro se desvanece al llegar a la lista
