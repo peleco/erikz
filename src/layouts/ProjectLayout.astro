@@ -16,7 +16,7 @@ const { title, year, agency, role = [], materials = [], website } = Astro.props;
 
       <span class="topbar-divider" aria-hidden="true"></span>
 
-      <span class="topbar-title">{title}</span>
+      <span class="topbar-title" style="view-transition-name: proj-title">{title}</span>
 
       <span class="topbar-graphic" aria-hidden="true">
         <canvas class="topbar-canvas" data-grid data-size="79" data-cols="3" data-rows="1" width="237" height="79"></canvas>

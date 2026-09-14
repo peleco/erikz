@@ -673,12 +673,17 @@ h3 {
    cuadro (flecha, divisor, título, canvas) se disuelve mientras el cuadro crece. El resto
    de la página entra con el fade que el router aplica al root. Un solo grupo: sin dos
    piezas que sincronizar y sin saltos. */
-::view-transition-group(proj-box) {
+::view-transition-group(proj-box),
+::view-transition-group(proj-title) {
   animation-duration: .6s;
   animation-timing-function: cubic-bezier(0.22, 1, 0.36, 1); /* easeOutQuint: llega suave */
 }
+/* El título tiene el mismo texto en la lista y en la barra, así que viaja con el cuadro
+   (se corre de lado); el resto del contenido del cuadro se disuelve mientras crece. */
 ::view-transition-old(proj-box),
-::view-transition-new(proj-box) {
+::view-transition-new(proj-box),
+::view-transition-old(proj-title),
+::view-transition-new(proj-title) {
   animation-duration: .45s;
 }
 

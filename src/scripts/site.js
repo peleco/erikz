@@ -80,8 +80,21 @@ function highlightForSlug(slug) {
 // origen y destino de cada navegación aquí para usarlos en la vuelta (after-swap no los trae).
 var lastNav = null;
 
-// Ida (home -> proyecto): antes de capturar el estado viejo, dejamos el cuadro colocado
-// sobre el item de destino y con el nombre de transición, para que suba a la barra.
+// Prepara el morph sobre un item: el cuadro (proj-box) sube/baja a la barra, y el nombre
+// del item (proj-title) viaja al título de la barra. Los dos tienen el mismo texto y la
+// misma duración/easing en el CSS, así que se mueven juntos (el título se corre de lado
+// para dejar sitio al back, no aparece ni desaparece).
+function setMorph(hit, animateMove) {
+  if (!hit || !hit.box) return;
+  moveHighlight(hit.box, hit.item, animateMove);
+  hit.box.classList.add('on');
+  hit.box.style.viewTransitionName = 'proj-box';
+  var name = hit.item.querySelector('.projects-home-item-name');
+  if (name) name.style.viewTransitionName = 'proj-title';
+}
+
+// Ida (home -> proyecto): antes de capturar el estado viejo, dejamos el cuadro y el título
+// colocados sobre el item de destino y con sus nombres de transición.
 document.addEventListener('astro:before-preparation', function (e) {
   var from = e.from ? e.from.pathname : location.pathname;
   var to = e.to ? e.to.pathname : '';
@@ -89,11 +102,7 @@ document.addEventListener('astro:before-preparation', function (e) {
   if (isHomePath(from) && isProjectPath(to)) {
     try { sessionStorage.setItem('fromHome', '1'); } catch (err) {}
     var hit = highlightForSlug(slugOf(to));
-    if (hit && hit.box) {
-      moveHighlight(hit.box, hit.item, hit.box.classList.contains('on'));
-      hit.box.classList.add('on');
-      hit.box.style.viewTransitionName = 'proj-box';
-    }
+    setMorph(hit, hit && hit.box ? hit.box.classList.contains('on') : false);
   }
 });
 
@@ -113,29 +122,26 @@ document.addEventListener('click', function (e) {
   }
 }, true);
 
-function clearHighlightName() {
+function clearMorphNames() {
   var box = document.querySelector('.projects-highlight');
   if (box) box.style.viewTransitionName = '';
+  var names = document.querySelectorAll('.projects-home-item-name');
+  for (var i = 0; i < names.length; i++) names[i].style.viewTransitionName = '';
 }
 
-// Vuelta (proyecto -> home): el DOM del home ya está vivo; colocamos el cuadro sobre el
-// item de origen y le damos el nombre, para que la barra baje a su sitio (morph inverso).
+// Vuelta (proyecto -> home): el DOM del home ya está vivo; colocamos el cuadro y el título
+// sobre el item de origen para que la barra baje a su sitio (morph inverso).
 document.addEventListener('astro:after-swap', function () {
   if (!lastNav || !isProjectPath(lastNav.from) || !isHomePath(lastNav.to)) return;
-  var hit = highlightForSlug(slugOf(lastNav.from));
-  if (hit && hit.box) {
-    moveHighlight(hit.box, hit.item, false);
-    hit.box.classList.add('on');
-    hit.box.style.viewTransitionName = 'proj-box';
-  }
+  setMorph(highlightForSlug(slugOf(lastNav.from)), false);
 });
 
-// El nombre de transición se limpia CUANDO la transición termina (no en page-load, que
+// Los nombres de transición se limpian CUANDO la transición termina (no en page-load, que
 // corre demasiado pronto y borraba el morph inverso antes de que se capturara el estado
 // nuevo). Así el hover vuelve a funcionar normal después de cada navegación.
 document.addEventListener('astro:before-swap', function (e) {
   if (e.viewTransition && e.viewTransition.finished) {
-    e.viewTransition.finished.finally(clearHighlightName);
+    e.viewTransition.finished.finally(clearMorphNames);
   }
 });
 
