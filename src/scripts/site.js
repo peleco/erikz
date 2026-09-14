@@ -134,17 +134,11 @@ document.addEventListener('astro:before-preparation', function (e) {
 // visible). Si se llegó directo al proyecto, el link cae a "/" normal. Captura para
 // adelantarnos al router de Astro y que no navegue a "/" además.
 // Salida al home: reproducimos las fases inversas en la página del proyecto (contenido +
-// back + canvas se van, el título vuelve a la izquierda) y recién ahí navegamos, para que
-// la View Transition capture la barra ya vaciada. La bajada del cuadro la hace el router.
+// back + canvas se van) y recién ahí navegamos, para que la View Transition capture la barra
+// ya vaciada. La bajada del cuadro + título (juntos, directo) la hace el router.
 function startLeaving() {
-  var title = document.querySelector('.topbar-title');
-  var back = document.querySelector('.topbar-back');
-  if (title && back) {
-    var shift = title.offsetLeft - back.offsetLeft;
-    if (shift > 0) title.style.setProperty('--title-shift', shift + 'px');
-  }
   document.documentElement.classList.add('is-leaving');
-  setTimeout(function () { history.back(); }, 550); // deja correr contenido/back/canvas + título
+  setTimeout(function () { history.back(); }, 550); // deja correr el fade de contenido/back/canvas
 }
 
 document.addEventListener('click', function (e) {
@@ -185,17 +179,11 @@ function clearMorphNames() {
   for (var i = 0; i < names.length; i++) names[i].style.viewTransitionName = '';
 }
 
-// Llegada al proyecto (forward): dejamos el header en su estado "entrando" (título a la
-// izquierda, back/divisor/canvas/contenido ocultos). Eso es lo que captura la View
-// Transition; al terminar se quita la clase y todo anima a su lugar (ver CSS is-entering).
-// Medimos cuánto tiene que correrse el título a la derecha (distancia del back al título).
+// Llegada al proyecto (forward): dejamos el header en su estado "entrando"
+// (back/divisor/canvas/contenido ocultos). Eso es lo que captura la View Transition; el
+// título viaja directo a su posición final junto con el cuadro. Al terminar se quita la
+// clase y back/canvas/contenido aparecen (ver CSS is-entering).
 function prepareProjectEntrance() {
-  var title = document.querySelector('.topbar-title');
-  var back = document.querySelector('.topbar-back');
-  if (title && back) {
-    var shift = title.offsetLeft - back.offsetLeft;
-    if (shift > 0) title.style.setProperty('--title-shift', shift + 'px');
-  }
   document.documentElement.classList.add('is-entering');
 }
 

@@ -714,21 +714,15 @@ html.is-returning::view-transition-new(root) { animation: vt-fade-in .35s ease .
 }
 
 /* Coreografía de entrada al proyecto (forward), por etapas:
-   1-2) el cuadro y el título suben juntos (proj-box / proj-title) hasta la barra, con el
-        título todavía a la izquierda (donde irá el back);
-   3) el título se corre a la derecha para dejar sitio al back;
-   4) back y divisor aparecen, el canvas entra con un fade mucho más lento, y el contenido
+   1-2) el cuadro y el título suben juntos (proj-box / proj-title), directo a su posición
+        final en la barra (el hueco del back ya está reservado);
+   3) back y divisor aparecen, el canvas entra con un fade mucho más lento, y el contenido
       de la página aparece.
-   El estado .is-entering es lo que captura la View Transition; al terminar se quita y
-   estas propiedades animan a su valor final (el JS mide --title-shift). */
-/* El estado inicial se aplica INSTANTÁNEO (transition: none), para que el snapshot de la
-   transición capture de verdad el título a la izquierda y el back/canvas/contenido
-   ocultos. Si no, la transición de reveal aplica también al ocultar y en el momento de la
+   El estado .is-entering es lo que captura la View Transition (back/canvas/contenido
+   ocultos); al terminar se quita y esas propiedades animan a su valor final.
+   Se aplica INSTANTÁNEO (transition: none) para que el snapshot capture de verdad el estado
+   oculto; si no, la transición de reveal aplica también al ocultar y en el momento de la
    captura todavía se ven. Al quitar la clase, las transiciones de abajo animan el reveal. */
-html.is-entering .topbar-title {
-  transform: translateX(calc(var(--title-shift, 0px) * -1));
-  transition: none;
-}
 html.is-entering .topbar-back,
 html.is-entering .topbar-divider,
 html.is-entering .topbar-graphic,
@@ -737,7 +731,6 @@ html.is-entering .project {
   transition: none;
 }
 
-.topbar-title { transition: transform .85s cubic-bezier(0.16, 1, 0.3, 1); }       /* 3 */
 .topbar-back,
 .topbar-divider { transition: opacity .7s ease .15s; }                            /* 4 */
 .topbar-graphic { transition: opacity 3s ease .6s; }                              /* 4: canvas, delay + fade muy lento */
@@ -754,11 +747,6 @@ html.is-leaving .topbar-graphic {
   opacity: 0;
   transition: opacity .3s ease;
 }
-html.is-leaving .topbar-title {
-  transform: translateX(calc(var(--title-shift, 0px) * -1));
-  transition: transform .45s cubic-bezier(0.16, 1, 0.3, 1) .12s;
-}
-
 /* Salida del home (forward): al hacer click en un proyecto, primero desaparece el resto de
    la página (mismo delay que la salida del proyecto), quedando solo el cuadro + el nombre
    del item elegido; luego arranca la subida a la barra. */
