@@ -139,12 +139,12 @@ document.addEventListener('astro:before-preparation', function (e) {
 // (Astro restaura el scroll y anima la vuelta, y el morph inverso aterriza sobre el item
 // visible). Si se llegó directo al proyecto, el link cae a "/" normal. Captura para
 // adelantarnos al router de Astro y que no navegue a "/" además.
-// Salida al home: reproducimos las fases inversas en la página del proyecto (contenido +
-// back + canvas se van) y recién ahí navegamos, para que la View Transition capture la barra
-// ya vaciada. La bajada del cuadro + título (juntos, directo) la hace el router.
+// Salida al home: el canvas se va rápido (is-leaving) y navegamos casi enseguida; el back,
+// el divisor y el contenido se van DENTRO de la transición (::view-transition-old), solapando
+// el arranque de la bajada del cuadro. Sin pausa muerta.
 function startLeaving() {
   document.documentElement.classList.add('is-leaving');
-  setTimeout(function () { history.back(); }, 550); // deja correr el fade de contenido/back/canvas
+  setTimeout(function () { history.back(); }, 200);
 }
 
 document.addEventListener('click', function (e) {
@@ -175,7 +175,7 @@ document.addEventListener('click', function (e) {
   if (box) { moveHighlight(box, link, box.classList.contains('on')); box.classList.add('on'); }
   link.classList.add('is-leaving-target');
   document.documentElement.classList.add('is-leaving-home');
-  setTimeout(function () { navigate(href); }, 550);
+  setTimeout(function () { navigate(href); }, 250); // el resto del home se va solapando la subida
 }, true);
 
 function clearMorphNames() {

@@ -686,70 +686,49 @@ h3 {
 }
 
 /* Transiciones entre páginas (Astro ClientRouter, View Transitions API) --------------
-   Solo el cuadro amarillo hace morph: en la lista es .projects-highlight, en el proyecto
-   es .topbar-inner (ambos con view-transition-name: proj-box). El contenido dentro del
-   cuadro (flecha, divisor, título, canvas) se disuelve mientras el cuadro crece. El resto
-   de la página entra con el fade que el router aplica al root. Un solo grupo: sin dos
-   piezas que sincronizar y sin saltos. */
+   El cuadro amarillo (proj-box) y el título (proj-title) hacen morph lista <-> barra. El
+   back, el divisor y el contenido de la página tienen su propio nombre y entran/salen DENTRO
+   de la transición, con un delay que SOLAPA la cola del morph, para que se sienta continuo
+   y no paso a paso. El canvas se revela aparte, lento, ya en la página viva (un fade de 3s
+   no puede ir dentro de la transición porque la bloquearía). */
 @keyframes vt-fade-in { from { opacity: 0; } to { opacity: 1; } }
 @keyframes vt-fade-out { from { opacity: 1; } to { opacity: 0; } }
 
-/* Vuelta al home (is-returning): el home (root nuevo) aparece cuando el cuadro ya llegó a
-   la lista, no durante la bajada. El cuadro y el título son grupos aparte, no se afectan. */
-html.is-returning::view-transition-old(root) { animation: vt-fade-out .2s ease both; }
-html.is-returning::view-transition-new(root) { animation: vt-fade-in .35s ease .3s both; }
+.project { view-transition-name: page-content; }
 
+/* Cuadro + título: morph, misma duración y easing (aterrizan pegados). El back y el divisor
+   NO tienen nombre propio: son parte del cuadro (proj-box), así que aparecen/desaparecen con
+   el crossfade del cuadro mientras éste sube o baja, viajando en Y con la barra. */
 ::view-transition-group(proj-box),
 ::view-transition-group(proj-title) {
   animation-duration: .85s;
   animation-timing-function: cubic-bezier(0.3, 0.85, 0.25, 1); /* ease-out suave */
 }
-/* El título tiene el mismo texto en la lista y en la barra, así que viaja con el cuadro
-   (se corre de lado); el resto del contenido del cuadro se disuelve mientras crece. */
 ::view-transition-old(proj-box),
 ::view-transition-new(proj-box),
 ::view-transition-old(proj-title),
 ::view-transition-new(proj-title) {
-  animation-duration: .45s;
+  animation-duration: .55s;
 }
 
-/* Coreografía de entrada al proyecto (forward), por etapas:
-   1-2) el cuadro y el título suben juntos (proj-box / proj-title), directo a su posición
-        final en la barra (el hueco del back ya está reservado);
-   3) back y divisor aparecen, el canvas entra con un fade mucho más lento, y el contenido
-      de la página aparece.
-   El estado .is-entering es lo que captura la View Transition (back/canvas/contenido
-   ocultos); al terminar se quita y esas propiedades animan a su valor final.
-   Se aplica INSTANTÁNEO (transition: none) para que el snapshot capture de verdad el estado
-   oculto; si no, la transición de reveal aplica también al ocultar y en el momento de la
-   captura todavía se ven. Al quitar la clase, las transiciones de abajo animan el reveal. */
-html.is-entering .topbar-back,
-html.is-entering .topbar-divider,
-html.is-entering .topbar-graphic,
-html.is-entering .project {
-  opacity: 0;
-  transition: none;
-}
+/* Contenido de la página: entra (ida) solapando la cola de la subida; sale (vuelta) apenas
+   arranca la bajada. Solo fade, mantiene su posición. */
+::view-transition-new(page-content) { animation: vt-fade-in .45s ease .45s both; }
+::view-transition-old(page-content) { animation: vt-fade-out .3s ease both; }
 
-.topbar-back,
-.topbar-divider { transition: opacity .7s ease .15s; }                            /* 4 */
-.topbar-graphic { transition: opacity 3s ease .6s; }                              /* 4: canvas, delay + fade muy lento */
-.project { transition: opacity .5s ease .12s; }                                   /* 4 */
+/* Vuelta al home (is-returning): el home (root nuevo) aparece solapando la cola de la bajada. */
+html.is-returning::view-transition-old(root) { animation: vt-fade-out .2s ease both; }
+html.is-returning::view-transition-new(root) { animation: vt-fade-in .4s ease .3s both; }
 
-/* Vuelta al home (reverse): inversa de la entrada. Se reproduce en la página del proyecto
-   ANTES de navegar (.is-leaving), para que la View Transition capture la barra ya vaciada
-   (contenido/back/canvas ocultos, título corrido a la izquierda). Luego el cuadro + título
-   bajan a la lista (misma transición que la subida) y al llegar el cuadro hace fade out. */
-html.is-leaving .project,
-html.is-leaving .topbar-back,
-html.is-leaving .topbar-divider,
-html.is-leaving .topbar-graphic {
-  opacity: 0;
-  transition: opacity .3s ease;
-}
-/* Salida del home (forward): al hacer click en un proyecto, primero desaparece el resto de
-   la página (mismo delay que la salida del proyecto), quedando solo el cuadro + el nombre
-   del item elegido; luego arranca la subida a la barra. */
+/* Canvas del header: oculto durante la transición (is-entering, instantáneo para que el
+   snapshot lo capture oculto) y revelado después, lento, en la página viva. */
+html.is-entering .topbar-graphic { opacity: 0; transition: none; }
+.topbar-graphic { transition: opacity 3s ease .2s; }
+/* Vuelta: el canvas (sin nombre propio) se va rápido antes de navegar. */
+html.is-leaving .topbar-graphic { opacity: 0; transition: opacity .2s ease; }
+
+/* Salida del home (forward): el resto de la página se va mientras el cuadro ya arranca la
+   subida (se solapan), quedando el cuadro + el nombre del item elegido. */
 html.is-leaving-home .header-home,
 html.is-leaving-home .intro-home,
 html.is-leaving-home .information-home,
