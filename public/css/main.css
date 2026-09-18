@@ -837,6 +837,7 @@ html.is-leaving-home .is-leaving-target .projects-home-item-type {
 }
 .project-text .projects-actions {
   margin-top: 2.5rem;
+  margin-bottom: 1.875rem; /* mismo ritmo que los párrafos, para igualar el gap a las imágenes */
 }
 .projects-actions a {
   display: inline-block;
