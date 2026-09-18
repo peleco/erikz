@@ -3,3 +3,6 @@ dist/
 .astro/
 .claude/
 .DS_Store
+
+# Originales de trabajo (los assets desplegables viven en public/)
+docs/

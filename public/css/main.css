@@ -902,6 +902,23 @@ html.is-leaving-home .is-leaving-target .projects-home-item-type {
   grid-column: span 6;
   margin-bottom: 1.875rem;
 }
+/* GME: los 4 engines cuadrados en un grid 2x2, en loop. */
+.gme-engines {
+  grid-column: span 12;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--grid-gutter);
+  margin-bottom: 1.875rem;
+}
+.gme-engines video {
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 1 / 1;
+}
+@media only screen and (max-width: 37.5rem) {
+  .gme-engines { gap: var(--grid-gutter-mobile); }
+}
 /* .project-images video {
   width: 100% !important;
   height: auto !important;

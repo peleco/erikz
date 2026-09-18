@@ -29,14 +29,37 @@ import ProjectLayout from '../../layouts/ProjectLayout.astro';
   </p>
 
   <Fragment slot="images">
-    {/* VIDEO DE LOS ENGINES (pendiente): exportar del Graphics Studio y dejar en
-        /img/projects/gme/. Cuando esté, descomentar y ajustar el src.
-    <div class="project-img">
-      <video width="100%" autoplay muted loop playsinline poster="/img/projects/gme/engine-poster.png">
-        <source src="/img/projects/gme/engine-route.mp4" type="video/mp4" />
+    <p class="project-images-label">The four engines running in signature mode: polygon, route, vector and network.</p>
+
+    <div class="gme-engines">
+      <video autoplay muted loop playsinline preload="metadata" aria-label="Polygon engine">
+        <source src="/img/projects/gme/polygon.mp4" type="video/mp4" />
+      </video>
+      <video autoplay muted loop playsinline preload="metadata" aria-label="Route engine">
+        <source src="/img/projects/gme/route.mp4" type="video/mp4" />
+      </video>
+      <video autoplay muted loop playsinline preload="metadata" aria-label="Vector engine">
+        <source src="/img/projects/gme/vector.mp4" type="video/mp4" />
+      </video>
+      <video autoplay muted loop playsinline preload="metadata" aria-label="Network engine">
+        <source src="/img/projects/gme/network.mp4" type="video/mp4" />
       </video>
     </div>
-    <p class="project-images-label">One of the four engines running: route, in signature mode.</p>
-    */}
+
+    <div class="project-img">
+      <img src="/img/projects/gme/gme-1.png" alt="Green My Experience" />
+    </div>
+    <div class="project-img">
+      <img src="/img/projects/gme/gme-2.png" alt="Green My Experience" />
+    </div>
+    <div class="project-img">
+      <img src="/img/projects/gme/gme-3.png" alt="Green My Experience" />
+    </div>
+    <div class="project-img">
+      <img src="/img/projects/gme/gme-4.png" alt="Green My Experience" />
+    </div>
+    <div class="project-img">
+      <img src="/img/projects/gme/gme-5.png" alt="Green My Experience" />
+    </div>
   </Fragment>
 </ProjectLayout>
